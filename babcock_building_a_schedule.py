@@ -180,15 +180,15 @@ b.add(mobs, "layout", "Building Control Lines, Survey & Layout", 2,
       preds=["mob"])
 
 # ---- Selective Demolition (Division 02) -----------------------------
-demo_s = b.add(con, "demo_s", "Selective Demolition (Division 02 - "
-               "Existing Conditions)")
+demo_s = b.add(con, "demo_s", "Selective Demolition")
 b.add(demo_s, "safeoff", "MEP Safe-Off, Disconnects & Cap-Offs", 2,
       preds=["dust", ("temp", SS, 1)])
 b.add(demo_s, "demo", "Selective Interior Demolition - Walls, Ceilings, "
       "Flooring & Fixtures", 12, preds=["safeoff", "s_demo_p"],
-      notes="Division 02 carries 20 days in the bid tab - demolition "
-            "phase (safe-off through verification walk) spans ~20 working "
-            "days. ASSUMPTION: no asbestos/hazardous materials abatement "
+      notes="Division 02 carries 20 crew-days in the bid tab - "
+            "overlapping demolition crews carry 33 crew-days of effort "
+            "across a ~15-working-day phase (safe-off through the "
+            "verification walk). ASSUMPTION: no asbestos/hazardous materials abatement "
             "in contract (none carried in Exhibit C) - any discovered "
             "hazmat is Owner-directed work.")
 b.add(demo_s, "demo_mep", "Demolish & Remove Redundant MEP Systems", 8,
@@ -204,7 +204,7 @@ b.add(demo_s, "demo_ver", "Post-Demolition Walk & Existing Conditions "
 
 # ---- Concrete, Underground & Structural Modifications ---------------
 strs = b.add(con, "strs", "Concrete, Underground & Structural "
-             "Modifications (Divisions 03, 04, 05, 31)")
+             "Modifications")
 b.add(strs, "sawcut", "Sawcut Slab & Trench for New Underground "
       "Utilities", 3, preds=["demo_ver"],
       notes="Division 31 Earthwork carries 5 days but $0 in the bid tab - "
@@ -242,10 +242,14 @@ b.add(strs, "roof", "Roof Modifications - Curbs, Openings & Patching "
             "preserve any existing warranty.")
 
 # ---- Interior Framing & MEP Rough-In --------------------------------
-rough = b.add(con, "rough", "Interior Framing & MEP Rough-In "
-              "(Divisions 09, 22, 23, 26, 27, 28)")
+rough = b.add(con, "rough", "Interior Framing & MEP Rough-In")
 b.add(rough, "frame", "Metal Stud Framing - Interior Partitions & "
-      "Furr-Outs (Division 09)", 15, preds=["demo_ver", "layout"])
+      "Furr-Outs (Division 09)", 15,
+      preds=["demo_ver", "layout", ("slab", FF, 2)],
+      notes="Sequenced dry areas first; wet-wall framing over the new "
+            "underground utilities follows the slab infill pours "
+            "(finish-to-finish tie) - no partitions framed over open "
+            "trenches.")
 b.add(rough, "frames_hm", "Set Hollow Metal Door Frames in Partitions "
       "(Division 08)", 3, preds=[("frame", SS, 5), "s_drs_p"],
       notes="Requires early frame release from the door supplier - "
@@ -299,8 +303,7 @@ b.add(rough, "mep_rough_ms", "MEP & Framing Rough-In Complete - Ready "
       "for Cover", milestone=True, preds=["rough_insp"])
 
 # ---- Insulation, Drywall & Ceilings ---------------------------------
-dry = b.add(con, "dry", "Insulation, Drywall & Ceilings (Divisions 07, "
-            "09)")
+dry = b.add(con, "dry", "Insulation, Drywall & Ceilings")
 b.add(dry, "wall_ins", "Wall & Sound Batt Insulation (Division 07)", 5,
       preds=["mep_rough_ms"])
 b.add(dry, "ins_insp", "Insulation Inspection (AHJ)", 1,
@@ -329,8 +332,7 @@ b.add(dry, "tile_drop", "Drop Acoustical Ceiling Tile (Division 09)", 3,
       preds=["aboveceil"])
 
 # ---- Interior Finishes ----------------------------------------------
-fin = b.add(con, "fin", "Interior Finishes (Divisions 06, 08, 09, 10, "
-            "11, 12)")
+fin = b.add(con, "fin", "Interior Finishes")
 b.add(fin, "cer_tile", "Ceramic Tile - Restroom Floors & Walls "
       "(Division 09)", 8, preds=[("tape", FS, 2), "s_fin_p"])
 b.add(fin, "storefront", "Aluminum Storefront & Interior Glazing "
@@ -370,8 +372,7 @@ b.add(fin, "ext", "Exterior Improvements - Site Repairs at Entries "
             "extent with the Scope of Services.")
 
 # ---- MEP Trim & Low Voltage -----------------------------------------
-trim = b.add(con, "trim", "MEP Trim & Low-Voltage Systems (Divisions "
-             "22, 26, 27, 28)")
+trim = b.add(con, "trim", "MEP Trim & Low-Voltage Systems")
 b.add(trim, "plmb_trim", "Plumbing Fixtures, Trim & Water Heaters "
       "(Division 22)", 8, preds=["cer_tile", "s_plmb_p"])
 b.add(trim, "elec_trim", "Electrical Devices, Cover Plates & Panel "
@@ -392,8 +393,9 @@ b.add(trim, "fa_dev", "Fire Alarm Devices & Notification Appliances "
 # ---- Startup, Testing & Commissioning -------------------------------
 cx = b.add(con, "cx", "Startup, Testing & Commissioning")
 b.add(cx, "power_on", "Permanent Power Energization & Switchover", 2,
-      preds=["gear_set", "wire"],
-      notes="Coordinate utility/Owner shutdown windows for the "
+      preds=["gear_set", "wire", "rough_insp"],
+      notes="Energization only after the AHJ electrical rough inspection "
+            "release. Coordinate utility/Owner shutdown windows for the "
             "switchover.")
 b.add(cx, "controls", "BAS Controls - Point-to-Point & Programming "
       "(Divisions 23/25)", 10, preds=["s_bas_p", "set_vav", "power_on"])
@@ -405,9 +407,11 @@ b.add(cx, "tab", "Test, Adjust & Balance (TAB) w/ Report", 8,
       notes="Certified TAB agency; report submitted with closeout "
             "documents.")
 b.add(cx, "fa_test", "Fire Alarm Pre-Test & AHJ Acceptance Test (Hold "
-      "Point)", 2, preds=["fa_dev", "controls"],
+      "Point)", 2, preds=["fa_dev", "controls", "doors", "sec_dev"],
       notes="AHJ acceptance test required before Certificate of "
-            "Occupancy.")
+            "Occupancy. Follows door hardware and access control "
+            "completion so all interfaced functions (mag-lock release, "
+            "hold-open release, AHU shutdown) can be demonstrated.")
 b.add(cx, "life_safety", "Life Safety Demonstration - Egress, Emergency "
       "Lighting & Signage", 1, preds=["fa_test", "lights"])
 b.add(cx, "cxfpt", "Functional Performance Testing / Commissioning", 5,

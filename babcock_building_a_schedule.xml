@@ -40,7 +40,7 @@
     <MoveCompletedEndsForward>0</MoveCompletedEndsForward>
     <BaselineForEarnedValue>0</BaselineForEarnedValue>
     <AutoAddNewResourcesAndTasks>1</AutoAddNewResourcesAndTasks>
-    <CurrentDate>2026-07-24T21:48:12</CurrentDate>
+    <CurrentDate>2026-07-24T22:03:37</CurrentDate>
     <MicrosoftProjectServerURL>1</MicrosoftProjectServerURL>
     <Autolink>1</Autolink>
     <NewTaskStartDate>0</NewTaskStartDate>
@@ -2468,12 +2468,12 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-07T08:00:00</EarlyStart>
             <EarlyFinish>2026-09-15T17:00:00</EarlyFinish>
-            <LateStart>2026-11-19T08:00:00</LateStart>
-            <LateFinish>2026-12-31T17:00:00</LateFinish>
-            <FreeSlack>350400</FreeSlack>
-            <TotalSlack>350400</TotalSlack>
-            <StartSlack>350400</StartSlack>
-            <FinishSlack>350400</FinishSlack>
+            <LateStart>2026-11-13T08:00:00</LateStart>
+            <LateFinish>2026-12-23T17:00:00</LateFinish>
+            <FreeSlack>331200</FreeSlack>
+            <TotalSlack>331200</TotalSlack>
+            <StartSlack>331200</StartSlack>
+            <FinishSlack>331200</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT216H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -2513,11 +2513,11 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-07T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-07T17:00:00</EarlyFinish>
-            <LateStart>2026-11-19T08:00:00</LateStart>
-            <LateFinish>2026-11-19T17:00:00</LateFinish>
-            <TotalSlack>350400</TotalSlack>
-            <StartSlack>350400</StartSlack>
-            <FinishSlack>350400</FinishSlack>
+            <LateStart>2026-11-13T08:00:00</LateStart>
+            <LateFinish>2026-11-13T17:00:00</LateFinish>
+            <TotalSlack>331200</TotalSlack>
+            <StartSlack>331200</StartSlack>
+            <FinishSlack>331200</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT8H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -2564,11 +2564,11 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-10T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-14T17:00:00</EarlyFinish>
-            <LateStart>2026-11-20T08:00:00</LateStart>
-            <LateFinish>2026-11-30T17:00:00</LateFinish>
-            <TotalSlack>350400</TotalSlack>
-            <StartSlack>350400</StartSlack>
-            <FinishSlack>350400</FinishSlack>
+            <LateStart>2026-11-16T08:00:00</LateStart>
+            <LateFinish>2026-11-20T17:00:00</LateFinish>
+            <TotalSlack>331200</TotalSlack>
+            <StartSlack>331200</StartSlack>
+            <FinishSlack>331200</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT40H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -2615,11 +2615,11 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-17T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-17T17:00:00</EarlyFinish>
-            <LateStart>2026-12-01T08:00:00</LateStart>
-            <LateFinish>2026-12-01T17:00:00</LateFinish>
-            <TotalSlack>350400</TotalSlack>
-            <StartSlack>350400</StartSlack>
-            <FinishSlack>350400</FinishSlack>
+            <LateStart>2026-11-23T08:00:00</LateStart>
+            <LateFinish>2026-11-23T17:00:00</LateFinish>
+            <TotalSlack>331200</TotalSlack>
+            <StartSlack>331200</StartSlack>
+            <FinishSlack>331200</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT8H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -2666,12 +2666,12 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-18T08:00:00</EarlyStart>
             <EarlyFinish>2026-09-15T17:00:00</EarlyFinish>
-            <LateStart>2026-12-02T08:00:00</LateStart>
-            <LateFinish>2026-12-31T17:00:00</LateFinish>
+            <LateStart>2026-11-24T08:00:00</LateStart>
+            <LateFinish>2026-12-23T17:00:00</LateFinish>
             <FreeSlack>331200</FreeSlack>
-            <TotalSlack>350400</TotalSlack>
-            <StartSlack>350400</StartSlack>
-            <FinishSlack>350400</FinishSlack>
+            <TotalSlack>331200</TotalSlack>
+            <StartSlack>331200</StartSlack>
+            <FinishSlack>331200</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT160H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -2970,12 +2970,12 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-10T08:00:00</EarlyStart>
             <EarlyFinish>2026-09-09T17:00:00</EarlyFinish>
-            <LateStart>2026-10-01T08:00:00</LateStart>
-            <LateFinish>2026-10-30T17:00:00</LateFinish>
-            <FreeSlack>177600</FreeSlack>
-            <TotalSlack>177600</TotalSlack>
-            <StartSlack>177600</StartSlack>
-            <FinishSlack>177600</FinishSlack>
+            <LateStart>2026-08-27T08:00:00</LateStart>
+            <LateFinish>2026-09-28T17:00:00</LateFinish>
+            <FreeSlack>62400</FreeSlack>
+            <TotalSlack>62400</TotalSlack>
+            <StartSlack>62400</StartSlack>
+            <FinishSlack>62400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT176H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -3015,11 +3015,11 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-10T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-10T17:00:00</EarlyFinish>
-            <LateStart>2026-10-01T08:00:00</LateStart>
-            <LateFinish>2026-10-01T17:00:00</LateFinish>
-            <TotalSlack>177600</TotalSlack>
-            <StartSlack>177600</StartSlack>
-            <FinishSlack>177600</FinishSlack>
+            <LateStart>2026-08-27T08:00:00</LateStart>
+            <LateFinish>2026-08-27T17:00:00</LateFinish>
+            <TotalSlack>62400</TotalSlack>
+            <StartSlack>62400</StartSlack>
+            <FinishSlack>62400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT8H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -3066,11 +3066,11 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-11T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-17T17:00:00</EarlyFinish>
-            <LateStart>2026-10-02T08:00:00</LateStart>
-            <LateFinish>2026-10-08T17:00:00</LateFinish>
-            <TotalSlack>177600</TotalSlack>
-            <StartSlack>177600</StartSlack>
-            <FinishSlack>177600</FinishSlack>
+            <LateStart>2026-08-28T08:00:00</LateStart>
+            <LateFinish>2026-09-03T17:00:00</LateFinish>
+            <TotalSlack>62400</TotalSlack>
+            <StartSlack>62400</StartSlack>
+            <FinishSlack>62400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT40H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -3117,11 +3117,11 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-18T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-18T17:00:00</EarlyFinish>
-            <LateStart>2026-10-09T08:00:00</LateStart>
-            <LateFinish>2026-10-09T17:00:00</LateFinish>
-            <TotalSlack>177600</TotalSlack>
-            <StartSlack>177600</StartSlack>
-            <FinishSlack>177600</FinishSlack>
+            <LateStart>2026-09-04T08:00:00</LateStart>
+            <LateFinish>2026-09-04T17:00:00</LateFinish>
+            <TotalSlack>62400</TotalSlack>
+            <StartSlack>62400</StartSlack>
+            <FinishSlack>62400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT8H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -3168,12 +3168,12 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-19T08:00:00</EarlyStart>
             <EarlyFinish>2026-09-09T17:00:00</EarlyFinish>
-            <LateStart>2026-10-12T08:00:00</LateStart>
-            <LateFinish>2026-10-30T17:00:00</LateFinish>
+            <LateStart>2026-09-08T08:00:00</LateStart>
+            <LateFinish>2026-09-28T17:00:00</LateFinish>
             <FreeSlack>62400</FreeSlack>
-            <TotalSlack>177600</TotalSlack>
-            <StartSlack>177600</StartSlack>
-            <FinishSlack>177600</FinishSlack>
+            <TotalSlack>62400</TotalSlack>
+            <StartSlack>62400</StartSlack>
+            <FinishSlack>62400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT120H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -4225,12 +4225,12 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-13T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-28T17:00:00</EarlyFinish>
-            <LateStart>2026-10-27T08:00:00</LateStart>
-            <LateFinish>2026-11-11T17:00:00</LateFinish>
-            <FreeSlack>249600</FreeSlack>
-            <TotalSlack>249600</TotalSlack>
-            <StartSlack>249600</StartSlack>
-            <FinishSlack>249600</FinishSlack>
+            <LateStart>2026-09-23T08:00:00</LateStart>
+            <LateFinish>2026-10-08T17:00:00</LateFinish>
+            <FreeSlack>134400</FreeSlack>
+            <TotalSlack>134400</TotalSlack>
+            <StartSlack>134400</StartSlack>
+            <FinishSlack>134400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT96H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -4270,11 +4270,11 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-13T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-13T17:00:00</EarlyFinish>
-            <LateStart>2026-10-27T08:00:00</LateStart>
-            <LateFinish>2026-10-27T17:00:00</LateFinish>
-            <TotalSlack>249600</TotalSlack>
-            <StartSlack>249600</StartSlack>
-            <FinishSlack>249600</FinishSlack>
+            <LateStart>2026-09-23T08:00:00</LateStart>
+            <LateFinish>2026-09-23T17:00:00</LateFinish>
+            <TotalSlack>134400</TotalSlack>
+            <StartSlack>134400</StartSlack>
+            <FinishSlack>134400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT8H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -4321,11 +4321,11 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-14T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-20T17:00:00</EarlyFinish>
-            <LateStart>2026-10-28T08:00:00</LateStart>
-            <LateFinish>2026-11-03T17:00:00</LateFinish>
-            <TotalSlack>249600</TotalSlack>
-            <StartSlack>249600</StartSlack>
-            <FinishSlack>249600</FinishSlack>
+            <LateStart>2026-09-24T08:00:00</LateStart>
+            <LateFinish>2026-09-30T17:00:00</LateFinish>
+            <TotalSlack>134400</TotalSlack>
+            <StartSlack>134400</StartSlack>
+            <FinishSlack>134400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT40H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -4372,11 +4372,11 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-21T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-21T17:00:00</EarlyFinish>
-            <LateStart>2026-11-04T08:00:00</LateStart>
-            <LateFinish>2026-11-04T17:00:00</LateFinish>
-            <TotalSlack>249600</TotalSlack>
-            <StartSlack>249600</StartSlack>
-            <FinishSlack>249600</FinishSlack>
+            <LateStart>2026-10-01T08:00:00</LateStart>
+            <LateFinish>2026-10-01T17:00:00</LateFinish>
+            <TotalSlack>134400</TotalSlack>
+            <StartSlack>134400</StartSlack>
+            <FinishSlack>134400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT8H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -4423,12 +4423,12 @@
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-08-24T08:00:00</EarlyStart>
             <EarlyFinish>2026-08-28T17:00:00</EarlyFinish>
-            <LateStart>2026-11-05T08:00:00</LateStart>
-            <LateFinish>2026-11-11T17:00:00</LateFinish>
+            <LateStart>2026-10-02T08:00:00</LateStart>
+            <LateFinish>2026-10-08T17:00:00</LateFinish>
             <FreeSlack>134400</FreeSlack>
-            <TotalSlack>249600</TotalSlack>
-            <StartSlack>249600</StartSlack>
-            <FinishSlack>249600</FinishSlack>
+            <TotalSlack>134400</TotalSlack>
+            <StartSlack>134400</StartSlack>
+            <FinishSlack>134400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT40H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -5308,7 +5308,7 @@
         <Task>
             <UID>102</UID>
             <ID>102</ID>
-            <Name>Selective Demolition (Division 02 - Existing Conditions)</Name>
+            <Name>Selective Demolition</Name>
             <Active>1</Active>
             <Manual>0</Manual>
             <Type>0</Type>
@@ -5438,7 +5438,7 @@
             <LevelAssignments>0</LevelAssignments>
             <LevelingCanSplit>0</LevelingCanSplit>
             <IgnoreResourceCalendar>0</IgnoreResourceCalendar>
-            <Notes>Division 02 carries 20 days in the bid tab - demolition phase (safe-off through verification walk) spans ~20 working days. ASSUMPTION: no asbestos/hazardous materials abatement in contract (none carried in Exhibit C) - any discovered hazmat is Owner-directed work.</Notes>
+            <Notes>Division 02 carries 20 crew-days in the bid tab - overlapping demolition crews carry 33 crew-days of effort across a ~15-working-day phase (safe-off through the verification walk). ASSUMPTION: no asbestos/hazardous materials abatement in contract (none carried in Exhibit C) - any discovered hazmat is Owner-directed work.</Notes>
             <HideBar>0</HideBar>
             <Rollup>0</Rollup>
             <EarnedValueMethod>0</EarnedValueMethod>
@@ -5623,7 +5623,7 @@
         <Task>
             <UID>108</UID>
             <ID>108</ID>
-            <Name>Concrete, Underground &amp; Structural Modifications (Divisions 03, 04, 05, 31)</Name>
+            <Name>Concrete, Underground &amp; Structural Modifications</Name>
             <Active>1</Active>
             <Manual>0</Manual>
             <Type>0</Type>
@@ -5643,17 +5643,14 @@
             <Estimated>0</Estimated>
             <Milestone>0</Milestone>
             <Summary>1</Summary>
-            <Critical>0</Critical>
+            <Critical>1</Critical>
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-09-24T08:00:00</EarlyStart>
             <EarlyFinish>2026-11-09T17:00:00</EarlyFinish>
-            <LateStart>2026-10-28T08:00:00</LateStart>
+            <LateStart>2026-09-24T08:00:00</LateStart>
             <LateFinish>2027-01-26T17:00:00</LateFinish>
-            <FreeSlack>115200</FreeSlack>
-            <TotalSlack>115200</TotalSlack>
-            <StartSlack>115200</StartSlack>
             <FinishSlack>244800</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT264H0M0S</RemainingDuration>
@@ -5688,17 +5685,14 @@
             <Estimated>0</Estimated>
             <Milestone>0</Milestone>
             <Summary>0</Summary>
-            <Critical>0</Critical>
+            <Critical>1</Critical>
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-09-24T08:00:00</EarlyStart>
             <EarlyFinish>2026-09-28T17:00:00</EarlyFinish>
-            <LateStart>2026-10-28T08:00:00</LateStart>
-            <LateFinish>2026-10-30T17:00:00</LateFinish>
-            <TotalSlack>115200</TotalSlack>
-            <StartSlack>115200</StartSlack>
-            <FinishSlack>115200</FinishSlack>
+            <LateStart>2026-09-24T08:00:00</LateStart>
+            <LateFinish>2026-09-28T17:00:00</LateFinish>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT24H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -5740,17 +5734,14 @@
             <Estimated>0</Estimated>
             <Milestone>0</Milestone>
             <Summary>0</Summary>
-            <Critical>0</Critical>
+            <Critical>1</Critical>
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-09-29T08:00:00</EarlyStart>
             <EarlyFinish>2026-10-05T17:00:00</EarlyFinish>
-            <LateStart>2026-11-02T08:00:00</LateStart>
-            <LateFinish>2026-11-06T17:00:00</LateFinish>
-            <TotalSlack>115200</TotalSlack>
-            <StartSlack>115200</StartSlack>
-            <FinishSlack>115200</FinishSlack>
+            <LateStart>2026-09-29T08:00:00</LateStart>
+            <LateFinish>2026-10-05T17:00:00</LateFinish>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT40H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -5798,17 +5789,14 @@
             <Estimated>0</Estimated>
             <Milestone>0</Milestone>
             <Summary>0</Summary>
-            <Critical>0</Critical>
+            <Critical>1</Critical>
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-10-06T08:00:00</EarlyStart>
             <EarlyFinish>2026-10-06T17:00:00</EarlyFinish>
-            <LateStart>2026-11-09T08:00:00</LateStart>
-            <LateFinish>2026-11-09T17:00:00</LateFinish>
-            <TotalSlack>115200</TotalSlack>
-            <StartSlack>115200</StartSlack>
-            <FinishSlack>115200</FinishSlack>
+            <LateStart>2026-10-06T08:00:00</LateStart>
+            <LateFinish>2026-10-06T17:00:00</LateFinish>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT8H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -5850,17 +5838,14 @@
             <Estimated>0</Estimated>
             <Milestone>0</Milestone>
             <Summary>0</Summary>
-            <Critical>0</Critical>
+            <Critical>1</Critical>
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-10-07T08:00:00</EarlyStart>
             <EarlyFinish>2026-10-08T17:00:00</EarlyFinish>
-            <LateStart>2026-11-10T08:00:00</LateStart>
-            <LateFinish>2026-11-11T17:00:00</LateFinish>
-            <TotalSlack>115200</TotalSlack>
-            <StartSlack>115200</StartSlack>
-            <FinishSlack>115200</FinishSlack>
+            <LateStart>2026-10-07T08:00:00</LateStart>
+            <LateFinish>2026-10-08T17:00:00</LateFinish>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT16H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -5901,17 +5886,14 @@
             <Estimated>0</Estimated>
             <Milestone>0</Milestone>
             <Summary>0</Summary>
-            <Critical>0</Critical>
+            <Critical>1</Critical>
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-10-09T08:00:00</EarlyStart>
             <EarlyFinish>2026-10-12T17:00:00</EarlyFinish>
-            <LateStart>2026-11-12T08:00:00</LateStart>
-            <LateFinish>2026-11-13T17:00:00</LateFinish>
-            <TotalSlack>115200</TotalSlack>
-            <StartSlack>115200</StartSlack>
-            <FinishSlack>115200</FinishSlack>
+            <LateStart>2026-10-09T08:00:00</LateStart>
+            <LateFinish>2026-10-12T17:00:00</LateFinish>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT16H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -6273,7 +6255,7 @@
         <Task>
             <UID>120</UID>
             <ID>120</ID>
-            <Name>Interior Framing &amp; MEP Rough-In (Divisions 09, 22, 23, 26, 27, 28)</Name>
+            <Name>Interior Framing &amp; MEP Rough-In</Name>
             <Active>1</Active>
             <Manual>0</Manual>
             <Type>0</Type>
@@ -6349,6 +6331,7 @@
             <LevelAssignments>0</LevelAssignments>
             <LevelingCanSplit>0</LevelingCanSplit>
             <IgnoreResourceCalendar>0</IgnoreResourceCalendar>
+            <Notes>Sequenced dry areas first; wet-wall framing over the new underground utilities follows the slab infill pours (finish-to-finish tie) - no partitions framed over open trenches.</Notes>
             <HideBar>0</HideBar>
             <Rollup>0</Rollup>
             <EarnedValueMethod>0</EarnedValueMethod>
@@ -6364,6 +6347,13 @@
                 <Type>1</Type>
                 <CrossProject>0</CrossProject>
                 <LinkLag>0</LinkLag>
+                <LagFormat>7</LagFormat>
+            </PredecessorLink>
+            <PredecessorLink>
+                <PredecessorUID>113</PredecessorUID>
+                <Type>0</Type>
+                <CrossProject>0</CrossProject>
+                <LinkLag>9600</LinkLag>
                 <LagFormat>7</LagFormat>
             </PredecessorLink>
         </Task>
@@ -7304,7 +7294,7 @@
         <Task>
             <UID>138</UID>
             <ID>138</ID>
-            <Name>Insulation, Drywall &amp; Ceilings (Divisions 07, 09)</Name>
+            <Name>Insulation, Drywall &amp; Ceilings</Name>
             <Active>1</Active>
             <Manual>0</Manual>
             <Type>0</Type>
@@ -7930,7 +7920,7 @@
         <Task>
             <UID>150</UID>
             <ID>150</ID>
-            <Name>Interior Finishes (Divisions 06, 08, 09, 10, 11, 12)</Name>
+            <Name>Interior Finishes</Name>
             <Active>1</Active>
             <Manual>0</Manual>
             <Type>0</Type>
@@ -8374,18 +8364,14 @@
             <Estimated>0</Estimated>
             <Milestone>0</Milestone>
             <Summary>0</Summary>
-            <Critical>0</Critical>
+            <Critical>1</Critical>
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-12-30T08:00:00</EarlyStart>
             <EarlyFinish>2027-01-11T17:00:00</EarlyFinish>
-            <LateStart>2027-01-04T08:00:00</LateStart>
-            <LateFinish>2027-01-13T17:00:00</LateFinish>
-            <FreeSlack>9600</FreeSlack>
-            <TotalSlack>9600</TotalSlack>
-            <StartSlack>9600</StartSlack>
-            <FinishSlack>9600</FinishSlack>
+            <LateStart>2026-12-30T08:00:00</LateStart>
+            <LateFinish>2027-01-11T17:00:00</LateFinish>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT64H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -8755,7 +8741,7 @@
         <Task>
             <UID>165</UID>
             <ID>165</ID>
-            <Name>MEP Trim &amp; Low-Voltage Systems (Divisions 22, 26, 27, 28)</Name>
+            <Name>MEP Trim &amp; Low-Voltage Systems</Name>
             <Active>1</Active>
             <Manual>0</Manual>
             <Type>0</Type>
@@ -8775,17 +8761,17 @@
             <Estimated>0</Estimated>
             <Milestone>0</Milestone>
             <Summary>1</Summary>
-            <Critical>0</Critical>
+            <Critical>1</Critical>
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-12-10T08:00:00</EarlyStart>
             <EarlyFinish>2027-01-11T17:00:00</EarlyFinish>
-            <LateStart>2027-01-04T08:00:00</LateStart>
+            <LateStart>2026-12-28T08:00:00</LateStart>
             <LateFinish>2027-01-26T17:00:00</LateFinish>
-            <FreeSlack>52800</FreeSlack>
-            <TotalSlack>52800</TotalSlack>
-            <StartSlack>67200</StartSlack>
+            <FreeSlack>48000</FreeSlack>
+            <TotalSlack>48000</TotalSlack>
+            <StartSlack>48000</StartSlack>
             <FinishSlack>52800</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT160H0M0S</RemainingDuration>
@@ -8991,18 +8977,14 @@
             <Estimated>0</Estimated>
             <Milestone>0</Milestone>
             <Summary>0</Summary>
-            <Critical>0</Critical>
+            <Critical>1</Critical>
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
             <EarlyStart>2026-12-28T08:00:00</EarlyStart>
             <EarlyFinish>2027-01-11T17:00:00</EarlyFinish>
-            <LateStart>2027-01-11T08:00:00</LateStart>
-            <LateFinish>2027-01-22T17:00:00</LateFinish>
-            <FreeSlack>28800</FreeSlack>
-            <TotalSlack>43200</TotalSlack>
-            <StartSlack>43200</StartSlack>
-            <FinishSlack>43200</FinishSlack>
+            <LateStart>2026-12-28T08:00:00</LateStart>
+            <LateFinish>2027-01-11T17:00:00</LateFinish>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT80H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
@@ -9066,6 +9048,7 @@
             <EarlyFinish>2027-01-06T17:00:00</EarlyFinish>
             <LateStart>2027-01-04T08:00:00</LateStart>
             <LateFinish>2027-01-11T17:00:00</LateFinish>
+            <FreeSlack>14400</FreeSlack>
             <TotalSlack>14400</TotalSlack>
             <StartSlack>14400</StartSlack>
             <FinishSlack>14400</FinishSlack>
@@ -9185,7 +9168,7 @@
             <LevelAssignments>0</LevelAssignments>
             <LevelingCanSplit>0</LevelingCanSplit>
             <IgnoreResourceCalendar>0</IgnoreResourceCalendar>
-            <Notes>Coordinate utility/Owner shutdown windows for the switchover.</Notes>
+            <Notes>Energization only after the AHJ electrical rough inspection release. Coordinate utility/Owner shutdown windows for the switchover.</Notes>
             <HideBar>0</HideBar>
             <Rollup>0</Rollup>
             <EarnedValueMethod>0</EarnedValueMethod>
@@ -9198,6 +9181,13 @@
             </PredecessorLink>
             <PredecessorLink>
                 <PredecessorUID>131</PredecessorUID>
+                <Type>1</Type>
+                <CrossProject>0</CrossProject>
+                <LinkLag>0</LinkLag>
+                <LagFormat>7</LagFormat>
+            </PredecessorLink>
+            <PredecessorLink>
+                <PredecessorUID>136</PredecessorUID>
                 <Type>1</Type>
                 <CrossProject>0</CrossProject>
                 <LinkLag>0</LinkLag>
@@ -9424,8 +9414,8 @@
             <OutlineNumber>1.2.8.5</OutlineNumber>
             <OutlineLevel>4</OutlineLevel>
             <Priority>500</Priority>
-            <Start>2027-01-07T08:00:00</Start>
-            <Finish>2027-01-08T17:00:00</Finish>
+            <Start>2027-01-12T08:00:00</Start>
+            <Finish>2027-01-13T17:00:00</Finish>
             <Duration>PT16H0M0S</Duration>
             <DurationFormat>7</DurationFormat>
             <ResumeValid>0</ResumeValid>
@@ -9435,24 +9425,21 @@
             <Estimated>0</Estimated>
             <Milestone>0</Milestone>
             <Summary>0</Summary>
-            <Critical>0</Critical>
+            <Critical>1</Critical>
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
-            <EarlyStart>2027-01-07T08:00:00</EarlyStart>
-            <EarlyFinish>2027-01-08T17:00:00</EarlyFinish>
+            <EarlyStart>2027-01-12T08:00:00</EarlyStart>
+            <EarlyFinish>2027-01-13T17:00:00</EarlyFinish>
             <LateStart>2027-01-12T08:00:00</LateStart>
             <LateFinish>2027-01-13T17:00:00</LateFinish>
-            <TotalSlack>14400</TotalSlack>
-            <StartSlack>14400</StartSlack>
-            <FinishSlack>14400</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT16H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
             <LevelAssignments>0</LevelAssignments>
             <LevelingCanSplit>0</LevelingCanSplit>
             <IgnoreResourceCalendar>0</IgnoreResourceCalendar>
-            <Notes>AHJ acceptance test required before Certificate of Occupancy.</Notes>
+            <Notes>AHJ acceptance test required before Certificate of Occupancy. Follows door hardware and access control completion so all interfaced functions (mag-lock release, hold-open release, AHU shutdown) can be demonstrated.</Notes>
             <HideBar>0</HideBar>
             <Rollup>0</Rollup>
             <EarnedValueMethod>0</EarnedValueMethod>
@@ -9465,6 +9452,20 @@
             </PredecessorLink>
             <PredecessorLink>
                 <PredecessorUID>173</PredecessorUID>
+                <Type>1</Type>
+                <CrossProject>0</CrossProject>
+                <LinkLag>0</LinkLag>
+                <LagFormat>7</LagFormat>
+            </PredecessorLink>
+            <PredecessorLink>
+                <PredecessorUID>158</PredecessorUID>
+                <Type>1</Type>
+                <CrossProject>0</CrossProject>
+                <LinkLag>0</LinkLag>
+                <LagFormat>7</LagFormat>
+            </PredecessorLink>
+            <PredecessorLink>
+                <PredecessorUID>169</PredecessorUID>
                 <Type>1</Type>
                 <CrossProject>0</CrossProject>
                 <LinkLag>0</LinkLag>
@@ -9483,8 +9484,8 @@
             <OutlineNumber>1.2.8.6</OutlineNumber>
             <OutlineLevel>4</OutlineLevel>
             <Priority>500</Priority>
-            <Start>2027-01-11T08:00:00</Start>
-            <Finish>2027-01-11T17:00:00</Finish>
+            <Start>2027-01-14T08:00:00</Start>
+            <Finish>2027-01-14T17:00:00</Finish>
             <Duration>PT8H0M0S</Duration>
             <DurationFormat>7</DurationFormat>
             <ResumeValid>0</ResumeValid>
@@ -9498,14 +9499,14 @@
             <IsSubproject>0</IsSubproject>
             <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
             <ExternalTask>0</ExternalTask>
-            <EarlyStart>2027-01-11T08:00:00</EarlyStart>
-            <EarlyFinish>2027-01-11T17:00:00</EarlyFinish>
+            <EarlyStart>2027-01-14T08:00:00</EarlyStart>
+            <EarlyFinish>2027-01-14T17:00:00</EarlyFinish>
             <LateStart>2027-01-18T08:00:00</LateStart>
             <LateFinish>2027-01-18T17:00:00</LateFinish>
-            <FreeSlack>24000</FreeSlack>
-            <TotalSlack>24000</TotalSlack>
-            <StartSlack>24000</StartSlack>
-            <FinishSlack>24000</FinishSlack>
+            <FreeSlack>9600</FreeSlack>
+            <TotalSlack>9600</TotalSlack>
+            <StartSlack>9600</StartSlack>
+            <FinishSlack>9600</FinishSlack>
             <FixedCostAccrual>3</FixedCostAccrual>
             <RemainingDuration>PT8H0M0S</RemainingDuration>
             <CalendarUID>-1</CalendarUID>
