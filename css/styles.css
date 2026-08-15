@@ -206,6 +206,7 @@ nav a.nav-cta:hover{background:var(--black);color:#fff;}
 .card:hover{box-shadow:0 14px 34px rgba(0,0,0,.10);transform:translateY(-3px);}
 .card-media{background:var(--bg-alt);border-bottom:1px solid var(--line);}
 .card-media svg{width:100%;height:auto;}
+.card-media img{width:100%;aspect-ratio:400/260;object-fit:cover;}
 .card-body{padding:26px 24px 28px;}
 .card-body h3{font-size:1.02rem;margin-bottom:8px;}
 .card-body .tag{
@@ -251,6 +252,7 @@ nav a.nav-cta:hover{background:var(--black);color:#fff;}
 @media (max-width:860px){.split,.split.rev{grid-template-columns:1fr;}}
 .split-media{border:1px solid var(--line);}
 .split-media svg{width:100%;height:auto;}
+.split-media img{width:100%;aspect-ratio:4/3;object-fit:cover;}
 
 /* ---------- Checklist ---------- */
 .checklist{list-style:none;margin-top:22px;}
