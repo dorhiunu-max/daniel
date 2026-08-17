@@ -4,7 +4,7 @@
 Fees are the originals with $5,000 added to each line item, per Edward's
 instruction:
 
-    26-228 Convention Center HVAC Replacement    $4,900.00 -> $9,900.00
+    26-228 Convention Center HVAC Replacement     $4,900.00 -> $9,900.00
     26-229 Joe Gulley Park Remote Power Additions $13,650.00 -> $18,650.00
 
 The letterhead ships as a .docx whose branding lives entirely in header1.xml /
@@ -130,7 +130,9 @@ body.append(para(
 
 # Transmittal
 body.append(para(run(
-    "Triun is pleased to submit the following proposals for your consideration."),
+    "Thank you for the opportunity to submit these proposals for the City of "
+    "Kenedy Convention Center HVAC Replacement and Joe Gulley Park Remote "
+    "Power Additions."),
     after=280))
 
 for item in ITEMS:
@@ -150,10 +152,13 @@ for item in ITEMS:
                          after=(300 if i == len(item["scope"]) - 1 else 40)))
 
 # Closing
-body.append(para(run("Thanks,"), before=120, after=360))
+body.append(para(run(
+    "Please contact me if you have any questions regarding our proposal "
+    "documents; I look forward to hearing from you."), after=280))
+body.append(para(run("Thanks,"), after=320, keep=True))
 body.append(para(run("Edward R. De La Garza, P.E.", bold=True, caps=True,
-                     color=CYAN), after=0))
-body.append(para(run("President/CEO", sz=20), after=0, sz=20))
+                     color=CYAN), after=0, keep=True))
+body.append(para(run("President/CEO", sz=20), after=0, sz=20, keep=True))
 body.append(para(run("Mobile | 210.296.4822", sz=20), sz=20))
 
 new_body = "".join(body)
@@ -162,12 +167,13 @@ new_body = "".join(body)
 doc = open(SRC, encoding="utf-8").read()
 
 # The template's white spacer paragraphs push text below the logo. Ten of them
-# leaves ~1.8in of dead space; drop four so the letter balances on the page.
+# leaves ~1.8in of dead space and spills the signature block onto a second
+# page; keep three, which still clears the logo with a ~0.5in gap.
 head, rest = doc.split("<w:body>", 1)
 spacers, tail = rest.split("<w:sectPr ", 1)
 paras = re.findall(r"<w:p\b.*?</w:p>", spacers, re.S)
 assert len(paras) == 10, "unexpected template body: %d paragraphs" % len(paras)
-spacers = "".join(paras[4:])
+spacers = "".join(paras[7:])
 
 doc = head + "<w:body>" + spacers + new_body + "<w:sectPr " + tail
 
