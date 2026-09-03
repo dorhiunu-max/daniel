@@ -64,8 +64,10 @@ from it, so the spec must be geometrically consistent.
   * two spaces that are **open to each other** (kitchen / dining / living, a toilet alcove
     open to a bath) **share an edge exactly** (zero gap). The renderer draws nothing (or a
     faint dashed line) there.
-* Every conditioned room has `zone: "living"`; the garage bay is `zone: "garage"` (6" inside
-  the garage footprint); the porch slab is `zone: "porch"`.
+* Every conditioned room has `zone: "living"`; the garage bay is `zone: "garage"` — 6" inside the
+  garage footprint on its exterior sides but **flush with the living footprint edge** along the
+  shared house/garage wall (that wall is the living polygon's 6" band, so it is not doubled); the
+  porch slab is `zone: "porch"`.
 * Closets, pantries, halls and alcoves are rooms too (that is how the walls get drawn).
 * Give **hallways ≥ 36" clear** (prefer 42"), bedrooms ≥ 70 sf and ≥ 7'-0" in each direction,
   bath fixtures IRC clearances (toilet centered in ≥ 30", ≥ 21" in front).

@@ -178,13 +178,13 @@ def main():
         for rid, (p, r) in room_polys.items():
             if r.get("zone", "living") == "living" and p.buffer(0.01).contains(pt):
                 return rid
-        for zk in ("living", "garage"):
-            if zk in zones and zones[zk].buffer(0.01).contains(pt):
-                # inside the garage footprint but inside the garage bay room -> that room
-                for rid, (p, r) in room_polys.items():
-                    if r.get("zone") == "garage" and p.buffer(0.01).contains(pt):
-                        return rid
-                return f"#wall:{zk}"
+        if "living" in zones and zones["living"].buffer(0.01).contains(pt):
+            return "#wall:living"
+        if "garage" in zones and zones["garage"].buffer(0.01).contains(pt):
+            for rid, (p, r) in room_polys.items():
+                if r.get("zone") == "garage" and p.buffer(0.01).contains(pt):
+                    return rid
+            return "#wall:garage"
         for rid, (p, r) in room_polys.items():
             if r.get("zone", "living") not in ("living", "garage") and p.buffer(0.01).contains(pt):
                 return rid

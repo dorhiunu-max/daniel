@@ -177,7 +177,7 @@
    "id": "garage",
    "name": "2 Car Garage",
    "zone": "garage",
-   "poly": [[6, 322], [234, 322], [234, 578], [6, 578]],
+   "poly": [[6, 316], [234, 316], [234, 578], [6, 578]],
    "floor": "concrete",
    "ceiling": "9' CLG"
   },
