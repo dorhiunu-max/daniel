@@ -1,0 +1,643 @@
+<title>PCL Interview Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F2F1EC; --surface:#FFFFFF; --surface2:#EAE8E1; --ink:#1B2733; --muted:#5F6A73; --line:#D7D4CB; --line2:#C4C0B5;
+  --navy:#1F3A5F; --navy-soft:#E3EAF3; --accent:#D9541E; --accent-soft:#FBE7DD; --accent-ink:#8F320C;
+  --good:#2E7D4F; --good-soft:#DFF0E5; --warn:#B7791F; --warn-soft:#F7ECD3; --bad:#B23A2E; --bad-soft:#F6DFDC;
+  --shadow:0 18px 50px rgba(27,39,51,.22); --overlay:rgba(27,39,51,.62);
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif; --body:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif; --mono:"IBM Plex Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141A21; --surface:#1D262F; --surface2:#242F3A; --ink:#E8E6E0; --muted:#9AA4AD; --line:#2E3A46; --line2:#3B4956;
+  --navy:#8FB3E0; --navy-soft:#1F2F44; --accent:#F0763C; --accent-soft:#3A2418; --accent-ink:#FFB08A;
+  --good:#5FBF88; --good-soft:#1B3527; --warn:#E0A94A; --warn-soft:#3A2E14; --bad:#E6786C; --bad-soft:#3D1F1C;
+  --shadow:0 18px 50px rgba(0,0,0,.55); --overlay:rgba(6,10,14,.72);
+}}
+:root[data-theme="dark"]{
+  --bg:#141A21; --surface:#1D262F; --surface2:#242F3A; --ink:#E8E6E0; --muted:#9AA4AD; --line:#2E3A46; --line2:#3B4956;
+  --navy:#8FB3E0; --navy-soft:#1F2F44; --accent:#F0763C; --accent-soft:#3A2418; --accent-ink:#FFB08A;
+  --good:#5FBF88; --good-soft:#1B3527; --warn:#E0A94A; --warn-soft:#3A2E14; --bad:#E6786C; --bad-soft:#3D1F1C;
+  --shadow:0 18px 50px rgba(0,0,0,.55); --overlay:rgba(6,10,14,.72);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--display);margin:0;line-height:1.05;text-wrap:balance;letter-spacing:.005em}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* header */
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top-in{max-width:1180px;margin:0 auto;padding:22px 24px 18px;display:flex;flex-wrap:wrap;gap:18px 32px;align-items:flex-end;justify-content:space-between}
+.top-in>div:first-child{flex:1 1 460px;min-width:0}
+.cand{flex:0 1 auto}
+.top h1{font-size:clamp(30px,4.2vw,46px);font-weight:700;margin-top:6px;color:var(--ink)}
+.top .sub{color:var(--muted);margin-top:6px;max-width:62ch}
+.cand{text-align:right}
+.cand .name{font-family:var(--display);font-size:22px;font-weight:600}
+.cand .eyebrow{margin-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{font-family:var(--mono);font-size:11.5px;padding:3px 8px;border:1px solid var(--line2);border-radius:3px;color:var(--muted);background:var(--bg)}
+
+/* grid */
+.wrap{max-width:1180px;margin:0 auto;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}.rail{position:static!important}}
+.rail{position:sticky;top:16px;display:flex;flex-direction:column;gap:16px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.box-h{padding:14px 18px 10px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.box-h h2{font-size:22px;font-weight:600}
+.box-b{padding:16px 18px}
+
+/* launcher */
+.launch{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.mode{text-align:left;background:var(--surface2);border:1px solid var(--line);border-radius:5px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:6px;transition:border-color .15s,transform .15s}
+.mode:hover{border-color:var(--navy);transform:translateY(-1px)}
+.mode .t{font-family:var(--display);font-size:20px;font-weight:600}
+.mode .d{color:var(--muted);font-size:13.5px}
+.mode .m{font-family:var(--mono);font-size:11.5px;color:var(--navy);margin-top:4px}
+.settings{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);align-items:center}
+.settings label{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted)}
+.settings select{font:inherit;font-size:13.5px;padding:4px 6px;border:1px solid var(--line2);border-radius:4px;background:var(--surface);color:var(--ink)}
+.settings input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px}
+.support{margin-top:12px;font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+.support .dot{width:9px;height:9px;border-radius:50%;background:var(--good);margin-top:5px;flex:none}
+.support.bad .dot{background:var(--bad)}
+.support.warn .dot{background:var(--warn)}
+
+/* bank */
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+.tab{background:transparent;border:1px solid var(--line2);border-radius:3px;padding:5px 10px;font-size:13px;color:var(--muted)}
+.tab[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+:root[data-theme="dark"] .tab[aria-pressed=true]{color:#0F1720}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab[aria-pressed=true]{color:#0F1720}}
+.qlist{display:flex;flex-direction:column}
+.q{border-top:1px solid var(--line);padding:0}
+.q:first-child{border-top:0}
+.q-head{width:100%;display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:start;background:none;border:0;padding:13px 0;text-align:left}
+.q-num{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:3px}
+.q-text{font-size:15px;line-height:1.4}
+.q-src{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap;padding-top:3px}
+.q-src.gd{color:var(--accent-ink)}
+.q-src.po{color:var(--navy)}
+.q-body{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 0 16px 46px}
+@media (max-width:640px){.q-body{grid-template-columns:1fr;padding-left:0}}
+.q-body h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:500}
+.q-body ul{margin:0;padding-left:16px;font-size:13.5px}
+.q-body li{margin:3px 0}
+.q-body p{font-size:13.5px}
+.q-actions{grid-column:1/-1;display:flex;gap:8px}
+.btn{border:1px solid var(--line2);background:var(--surface);border-radius:4px;padding:8px 14px;font-size:14px;font-weight:500;transition:background .15s,border-color .15s}
+.btn:hover{border-color:var(--navy)}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent}
+.btn.sm{padding:5px 10px;font-size:13px}
+.btn[disabled]{opacity:.5;cursor:default}
+
+/* rail cards */
+.fact{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13.5px}
+.fact:first-child{border-top:0;padding-top:0}
+.fact .k{font-family:var(--mono);font-size:12px;color:var(--navy);padding-top:2px}
+.map{display:flex;flex-direction:column;gap:8px}
+.map .row{display:grid;grid-template-columns:1fr;gap:2px;padding:8px 10px;background:var(--surface2);border-radius:4px}
+.map .need{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+.map .have{font-size:13.5px}
+.gap{padding:8px 10px;border-left:3px solid var(--warn);background:var(--warn-soft);border-radius:0 4px 4px 0;font-size:13.5px;margin-top:8px}
+.gap:first-child{margin-top:0}
+.gap b{display:block;font-weight:600}
+.log{display:flex;flex-direction:column;gap:6px}
+.log .e{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 10px;background:var(--surface2);border-radius:4px;font-size:13px;cursor:pointer}
+.log .e:hover{outline:1px solid var(--navy)}
+.log .e .qq{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.score-pill{font-family:var(--mono);font-size:12px;padding:2px 7px;border-radius:3px;font-weight:500}
+.s-good{background:var(--good-soft);color:var(--good)}.s-warn{background:var(--warn-soft);color:var(--warn)}.s-bad{background:var(--bad-soft);color:var(--bad)}
+.empty{color:var(--muted);font-size:13.5px}
+
+/* overlay */
+.overlay{position:fixed;inset:0;background:var(--overlay);display:flex;align-items:center;justify-content:center;padding:18px;z-index:50;backdrop-filter:blur(3px)}
+.card{width:min(860px,100%);max-height:calc(100vh - 36px);overflow:auto;background:var(--surface);border-radius:8px;box-shadow:var(--shadow);border:1px solid var(--line);animation:pop .28s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pop{from{transform:translateY(18px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.card{animation:none}.mic.live{animation:none}}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.card-top .eyebrow{display:flex;gap:10px;flex-wrap:wrap}
+.card-top .eyebrow span+span::before{content:"·";margin-right:10px;color:var(--line2)}
+.phases{display:flex;gap:4px}
+.ph{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:3px;color:var(--muted);background:var(--surface2)}
+.ph.on{background:var(--navy);color:#fff}
+.ph.done{color:var(--good);background:var(--good-soft)}
+.card-q{padding:30px 26px 22px}
+.card-q h2{font-size:clamp(26px,3.4vw,38px);font-weight:600;color:var(--ink);max-width:24ch}
+.card-q .hint{margin-top:10px;color:var(--muted);font-size:14px;max-width:70ch}
+.stage{padding:0 26px 22px;display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:start}
+@media (max-width:640px){.stage{grid-template-columns:1fr}}
+.micwrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+.mic{width:110px;height:110px;border-radius:50%;border:3px solid var(--line2);background:var(--surface2);display:flex;align-items:center;justify-content:center;position:relative;transition:transform .15s,background .2s,border-color .2s}
+.mic svg{width:42px;height:42px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mic:hover{transform:scale(1.03)}
+.mic.live{background:var(--accent);border-color:var(--accent);animation:pulse 1.6s ease-out infinite}
+.mic.live svg{stroke:#fff}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(217,84,30,.45)}100%{box-shadow:0 0 0 22px rgba(217,84,30,0)}}
+.mic[disabled]{opacity:.45;cursor:default;transform:none}
+.timer{font-family:var(--mono);font-size:30px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1}
+.timer.over{color:var(--bad)}
+.timer-l{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.think{font-family:var(--mono);font-size:64px;font-weight:500;color:var(--navy);line-height:1}
+.transcript{min-height:150px;max-height:260px;overflow:auto;background:var(--surface2);border-radius:5px;padding:14px 16px;font-size:16px;line-height:1.55;white-space:pre-wrap}
+.transcript .int{color:var(--muted)}
+.transcript.empty{color:var(--muted);font-style:italic}
+textarea.type{width:100%;min-height:150px;resize:vertical;font:inherit;font-size:16px;line-height:1.5;padding:14px 16px;border:1px solid var(--line2);border-radius:5px;background:var(--surface);color:var(--ink)}
+.card-act{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:0 26px 22px}
+.card-act .spacer{flex:1}
+.note{padding:10px 26px 0;font-size:13px;color:var(--muted)}
+.alert{margin:0 26px 16px;padding:10px 12px;border-radius:4px;background:var(--warn-soft);border-left:3px solid var(--warn);font-size:13.5px}
+.alert.bad{background:var(--bad-soft);border-color:var(--bad)}
+
+/* feedback */
+.fb{padding:6px 26px 26px;display:grid;gap:18px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.stat{background:var(--surface2);border-radius:4px;padding:10px 12px}
+.stat .v{font-family:var(--mono);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums}
+.stat .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.sc{display:grid;gap:5px}
+.sc .l{font-size:13px;display:flex;justify-content:space-between}
+.sc .l b{font-family:var(--mono);font-weight:500}
+.bar{height:8px;border-radius:4px;background:var(--surface2);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:4px;background:var(--navy)}
+.bar.good i{background:var(--good)}.bar.warn i{background:var(--warn)}.bar.bad i{background:var(--bad)}
+.overall{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:5px;background:var(--surface2)}
+.overall .big{font-family:var(--display);font-size:40px;font-weight:700;line-height:1}
+.overall .big small{font-size:18px;color:var(--muted);font-weight:500}
+.overall p{font-size:14.5px}
+.fb-sec h3{font-size:19px;font-weight:600;margin-bottom:6px}
+.fb-sec ul{margin:0;padding-left:18px;font-size:14.5px}
+.fb-sec li{margin:4px 0}
+.fb-sec .model{font-size:14.5px;line-height:1.6;background:var(--navy-soft);border-left:3px solid var(--navy);padding:12px 14px;border-radius:0 4px 4px 0;white-space:pre-wrap}
+.fb-sec .who{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:6px}
+.thinking{display:flex;gap:10px;align-items:center;color:var(--muted);font-size:14px;padding:10px 0}
+.spin{width:14px;height:14px;border:2px solid var(--line2);border-top-color:var(--navy);border-radius:50%;animation:rot .8s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.tag-miss{display:inline-block;font-size:12.5px;padding:2px 8px;border-radius:3px;background:var(--warn-soft);color:var(--warn);margin:2px 4px 2px 0}
+.tag-hit{display:inline-block;font-size:12.5px;padding:2px 8px;border-radius:3px;background:var(--good-soft);color:var(--good);margin:2px 4px 2px 0}
+
+/* summary */
+.sumgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.sumrow{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.sumrow:first-child{border-top:0}
+footer{max-width:1180px;margin:0 auto;padding:8px 24px 40px;color:var(--muted);font-size:12.5px}
+footer a{color:var(--navy)}
+.sr{position:absolute;left:-9999px}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div>
+      <div class="eyebrow">Mock interview · PCL Industrial Services, Inc. · Requisition 11154</div>
+      <h1>Electrical Industrial Project Coordinator</h1>
+      <p class="sub">Chandler, AZ. Speak your answers out loud; the room transcribes them, times you, and grades each one against the posting and your resume.</p>
+      <div class="chips">
+        <span class="chip">42 questions</span><span class="chip">Spark Hire · HR call · panel</span><span class="chip">4–7 yrs preferred · you: 5+</span><span class="chip">$1.5M–$3M scheduling</span>
+      </div>
+    </div>
+    <div class="cand">
+      <div class="eyebrow">Candidate</div>
+      <div class="name">Daniel Orhiunu</div>
+      <div class="chips" style="justify-content:flex-end"><span class="chip">PC · Triun</span><span class="chip">APM · Dantega 4.5 yrs</span><span class="chip">BAAS Safety &amp; Health · Dec 2026</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section style="display:flex;flex-direction:column;gap:24px;min-width:0">
+    <div class="box">
+      <div class="box-h"><h2>Start a session</h2><span class="eyebrow" id="coachState">Checking coach…</span></div>
+      <div class="box-b">
+        <div class="launch">
+          <button class="mode" data-mode="full"><span class="t">Full mock</span><span class="d">Ten questions in the order a panel would ask them: opener, behavioral, technical, safety, close.</span><span class="m">~25 min · retries allowed</span></button>
+          <button class="mode" data-mode="spark"><span class="t">Spark Hire drill</span><span class="d">Eight questions, 30 seconds to think, 3-minute hard cap, one take each. Mirrors PCL's first-round video screen.</span><span class="m">~20 min · no retries</span></button>
+          <button class="mode" data-mode="behav"><span class="t">Behavioral only</span><span class="d">Every STAR question in the bank, shuffled. The set PCL candidates report most.</span><span class="m">9 questions</span></button>
+          <button class="mode" data-mode="role"><span class="t">Technical only</span><span class="d">Change orders, submittals, RFIs, takeoffs, commissioning, codes, Baseplate.</span><span class="m">12 questions</span></button>
+          <button class="mode" data-mode="rapid"><span class="t">Rapid fire</span><span class="d">Fifteen random questions, no think time, 75-second cap. Builds the reflex.</span><span class="m">~20 min</span></button>
+          <button class="mode" data-mode="weak"><span class="t">Retry weakest</span><span class="d">Re-asks the five questions you scored lowest on in past sessions.</span><span class="m" id="weakCount">Needs a past session</span></button>
+        </div>
+        <div class="settings">
+          <label><input type="checkbox" id="optVoice" checked> Read the question aloud</label>
+          <label>Think time <select id="optThink"><option value="0">none</option><option value="15" selected>15 s</option><option value="30">30 s</option></select></label>
+          <label>Answer cap <select id="optCap"><option value="0">soft (2:00 guide)</option><option value="120">2:00 hard</option><option value="180" selected>3:00 hard</option></select></label>
+          <label><input type="checkbox" id="optAuto" checked> Start mic automatically</label>
+        </div>
+        <div class="support" id="micSupport"><span class="dot"></span><span>Checking microphone support…</span></div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-h"><h2>Question bank</h2><span class="eyebrow" id="bankCount"></span></div>
+      <div class="box-b">
+        <div class="tabs" id="tabs"></div>
+        <div class="qlist" id="qlist" style="margin-top:8px"></div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="rail">
+    <div class="box">
+      <div class="box-h"><h2>What to expect</h2></div>
+      <div class="box-b">
+        <div class="fact"><span class="k">R1</span><span><b>Spark Hire one-way video.</b> Candidates report about 8 pre-recorded questions, one attempt each. Look at the lens, not the screen.</span></div>
+        <div class="fact"><span class="k">R2</span><span><b>HR call on Teams.</b> Commute or relocation to Chandler, why you applied, what projects you want, benefits and role overview.</span></div>
+        <div class="fact"><span class="k">R3</span><span><b>Panel with the team lead.</b> Behavioral plus technical. Described as supportive and not too formal. A personality assessment may sit in the process.</span></div>
+        <div class="fact"><span class="k">⏱</span><span>Roughly one to two weeks end to end. Difficulty rated 3 of 5 and 87% positive by past Project Coordinator candidates.</span></div>
+        <div class="fact"><span class="k">PCL</span><span>100% employee-owned. Says it will not compromise safety. Industrial Services moved its HQ from Bakersfield to Phoenix and grows on self-perform electrical: semiconductor, data centers, water and wastewater, power distribution, mining.</span></div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-h"><h2>Your strongest cards</h2></div>
+      <div class="box-b map">
+        <div class="row"><span class="need">Posting: create and schedule $1.5M–$3M projects</span><span class="have">Built the 178-day Babcock Building A CPM schedule in MS Project: 17 submittal chains, AHJ hold points, 40-day electrical gear lead. P6 daily at Dantega.</span></div>
+        <div class="row"><span class="need">Posting: change management, RFIs, submittals, as-builts</span><span class="have">Owned all four at Dantega for 4.5 years across concurrent jobs; carry them today at Triun.</span></div>
+        <div class="row"><span class="need">Posting: quantity takeoffs for progress reporting</span><span class="have">On-Screen Takeoff and Quick Bid; takeoffs at PCI cut shortages and invoice discrepancies.</span></div>
+        <div class="row"><span class="need">Posting: site HSE, AHJ, code compliance sign-off</span><span class="have">OSHA 510/30, EM 385-1-1, NFPA 70E, HAZWOPER, ICC inspector; safety degree in December.</span></div>
+        <div class="row"><span class="need">Posting: adopts new technology (Baseplate)</span><span class="have">Procore, Bluebeam, PlanGrid, P6, MS Project, AutoCAD, advanced Excel. Name the fastest one you learned.</span></div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-h"><h2>Gaps to address head-on</h2></div>
+      <div class="box-b">
+        <div class="gap"><b>Electrical depth</b>You coordinated Div 26, you did not self-perform it. Say so, then show NFPA 70E, gear lead times, rough-in hold points, and how you learn a trade fast.</div>
+        <div class="gap"><b>ASME piping codes</b>You know IBC and NEC context. Name B31.3 as the process-piping code and describe how you learn a spec section to its code.</div>
+        <div class="gap"><b>Safety degree flight risk</b>They may wonder if you leave for a safety job. Answer: it makes you the coordinator who owns the HSE half of the role, at an employee-owned firm you plan to stay in.</div>
+        <div class="gap"><b>Relocation</b>San Antonio to Chandler. Have a date and a plan ready.</div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-h"><h2>Session log</h2><button class="btn sm ghost" id="clearLog">Clear</button></div>
+      <div class="box-b"><div class="log" id="log"><p class="empty">No answers yet. Start a session and your scores land here.</p></div></div>
+    </div>
+  </aside>
+</main>
+<footer>Question sources: the PCL job posting (req 11154), questions reported by PCL candidates on Glassdoor and Indeed, PCL's published culture material, and coordinator questions the role implies. Your answers stay in this browser only.</footer>
+
+<div id="overlayRoot"></div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- data ---------- */
+const CATS={fit:"Opener & fit",behav:"Behavioral",role:"Role & technical",hse:"Safety & HSE",plan:"Schedule, cost & controls",close:"Logistics & closing"};
+const SRC={gd:["Reported by PCL candidates","gd"],po:["From the job posting","po"],pcl:["PCL culture",""],res:["Likely from your resume",""],std:["Standard coordinator question",""]};
+const Q=[
+{id:1,cat:"fit",src:"std",q:"Tell me about yourself and walk me through your background.",why:"The opener. They want a 90-second arc that ends on why this role, not a resume readback.",hit:["5+ years: PCI internship (Las Vegas 2021), Dantega APM and assistant super for 4.5 years, Project Coordinator at Triun since March 2026","Controls plus field: RFIs, submittals, change orders, pay apps, P6 and MS Project, QA/QC inspections","Credentials: OSHA 510/30, EM 385-1-1, NFPA 70E, ICC; safety degree finishing December","Land it on: industrial electrical, Chandler, employee-owned PCL"],keys:[["timeline","dantega","triun","years"],["controls work","rfi","submittal","change order","schedule"],["safety credential","osha","nfpa","safety"],["why PCL / this role","pcl","chandler","industrial","electrical"]]},
+{id:2,cat:"fit",src:"gd",q:"Why do you want to work at PCL?",why:"Asked in nearly every reported PCL interview. Generic praise fails; specifics about PCL Industrial in Arizona win.",hit:["100% employee-owned: you think like an owner already (cost tracking, forecasting)","Industrial Services HQ moved to Phoenix; growth on self-perform electrical into semiconductor, data centers, water, power","College of Construction and clear career pathways","Safety is a stated non-negotiable; that is your professional identity"],keys:[["employee ownership","employee-owned","employee owned","ownership","owner"],["Arizona industrial growth","phoenix","arizona","chandler","semiconductor","data center","self-perform"],["development","college of construction","training","career path","develop"],["safety culture","safety"]]},
+{id:3,cat:"fit",src:"gd",q:"What made you apply for this position specifically?",why:"HR-round question reported by candidates. They are checking that you read the posting.",hit:["The posting reads like your Dantega job description: change orders, submittals, RFIs, as-builts, takeoffs, subcontract administration","The electrical industrial focus plus mission-critical background","The $1.5M–$3M scheduling requirement you have literally done"],keys:[["matched posting duties","change order","submittal","rfi","takeoff","subcontract"],["electrical / industrial","electrical","industrial","mission critical"],["scheduling","schedule"]]},
+{id:4,cat:"fit",src:"gd",q:"What makes you a good fit for this role?",why:"Reported verbatim by PCL Project Coordinator candidates. Three proofs, not ten adjectives.",hit:["Document control discipline: complete daily reports, logs, action items at Triun","Field credibility: assistant super time, jobsite walks, toolbox talks","Safety and code literacy the posting asks the coordinator to sign off on"],keys:[["document control","document","log","report","rfi","submittal"],["field experience","field","superintendent","crew","jobsite"],["safety / code","safety","code","ahj","osha"]]},
+{id:5,cat:"fit",src:"gd",q:"What kind of projects do you want to work on?",why:"Reported by candidates. PCL Industrial in Arizona means semiconductor, data centers, water and wastewater, power distribution, mining.",hit:["Mission critical and industrial electrical; you list mission critical on your resume","Name the Arizona pipeline: fabs in Chandler, data centers, the Gilbert North Water Treatment Plant PCL is on","Show flexibility: whatever the district needs first"],keys:[["industrial / mission critical","industrial","mission critical","data center","semiconductor","fab"],["arizona specifics","chandler","gilbert","arizona","water"],["flexibility","flexible","wherever","whatever"]]},
+{id:6,cat:"fit",src:"gd",q:"Where do you see yourself in five years?",why:"Reported for PCL. They want ambition inside PCL, and they will listen for whether you plan to leave for a pure safety job.",hit:["Project manager track inside PCL Industrial, running electrical scopes","The safety degree makes you the PM who owns HSE outcomes, not a departure","Mention mentoring: PCL says employees teach and lead by example"],keys:[["stay and grow at PCL","pcl","project manager","pm","grow"],["safety degree as asset","safety","degree"],["mentor / lead","mentor","lead","teach"]]},
+{id:7,cat:"fit",src:"res",q:"You are finishing a degree in Safety and Health. Why a project coordinator role instead of a safety role?",why:"Your resume invites this. A weak answer costs the offer; a strong one turns the degree into a differentiator.",hit:["The posting makes the coordinator responsible for site HSE reporting, AHJ requirements and inspections; the degree is built for that","Coordinators who understand hazards write better JHAs into the schedule and pre-task plans","You want to build, and you want the crews you coordinate to go home; those are the same job"],keys:[["coordinator owns HSE","hse","site safety","inspection","ahj"],["degree strengthens the role","degree","safety and health","stronger"],["commitment to building/coordinating","build","coordinate","project"]]},
+{id:8,cat:"fit",src:"gd",q:"What is the biggest or most complex construction project you have worked on?",why:"PCL interviewers use this to size your experience against $1.5M–$3M scopes.",hit:["Pick one Dantega project with the most concurrent trades or the federal/municipal one with EM 385-1-1","State value, duration, your role, and the hard part","Contrast with the Babcock Building A schedule: 178 days, 17 submittal packages, alternates"],keys:[["project scale","million","$","days","weeks","months"],["your role","i managed","i coordinated","my role","i was"],["complexity","concurrent","trades","phased","occupied","federal"]]},
+
+{id:9,cat:"behav",src:"gd",q:"Tell me about a time you had a conflict with a team member and how you resolved it.",why:"The most-reported PCL behavioral question. Use STAR, keep the other person human, end with the working relationship intact.",hit:["Coordinator versus superintendent over sequencing or a sub over scope is believable","Show you went to the drawings and the contract, not to the PM","Result: what got built, on time, and what changed in how you two worked"],keys:[["situation","when","at dantega","at triun","we had","project"],["action you took","i sat","i pulled","i asked","i walked","i proposed"],["resolution / result","resolved","agreed","result","ended up","we finished"]]},
+{id:10,cat:"behav",src:"gd",q:"Tell me about a time you were given a tight deadline. How did you manage it?",why:"Reported for PCL. They want prioritization and communication under pressure, not heroics.",hit:["Pay application cutoff, submittal deadline, or inspection date are natural","Show the triage: what you did first, what you delegated, who you warned early","Quantify: hours saved, deadline met, no rework"],keys:[["specific deadline","deadline","due","cutoff","by friday","hours"],["prioritized / delegated","prioritiz","delegat","first","triage"],["outcome","met","on time","submitted","approved"]]},
+{id:11,cat:"behav",src:"gd",q:"When was the last time you made a mistake at work? How did you handle it?",why:"Reported for PCL. Ownership and the system fix matter more than the mistake.",hit:["Pick a real, bounded mistake: a missed submittal revision, a quantity error, a wrong delivery date","Own it in the first sentence; say who you told and when","Describe the check you added so it cannot recur"],keys:[["owned it","my mistake","i missed","i got it wrong","i owned"],["told someone promptly","told","called","flagged","immediately"],["process fix","checklist","now i","since then","added"]]},
+{id:12,cat:"behav",src:"gd",q:"Tell me about a time you dealt with a difficult client or owner representative.",why:"Reported for PCL. Industrial owners are demanding; PCL sells a service-provider mentality.",hit:["Municipal or federal owner rep pushing on schedule or inspections works well","Listen, restate their concern, bring options with cost and schedule impact","Outcome and what the relationship looked like afterward"],keys:[["listened / understood","listen","understood","their concern","asked"],["options with impact","option","alternative","impact","cost","schedule"],["outcome","agreed","approved","satisfied","result"]]},
+{id:13,cat:"behav",src:"std",q:"Tell me about a time you took the initiative to improve a procedure or process.",why:"PCL's values say employees seek to improve and add value. Show a small system you built and kept.",hit:["Safety and compliance binders at Triun, action-item logs, a submittal tracker","Why it was needed, what you built, who uses it now","Measurable: fewer misses, faster closeout, cleaner audit"],keys:[["problem noticed","noticed","kept","were missing","problem"],["what you built","built","created","set up","tracker","log","binder"],["adoption / result","now","team uses","reduced","faster"]]},
+{id:14,cat:"behav",src:"std",q:"Tell me about a time your integrity was challenged on a project.",why:"PCL's values: open, candid, truthful; your word is your bond. Coordinators certify quantities and sign inspections.",hit:["Pressure to bill ahead of installed quantities, sign off a deficient install, or bury an incident","What you refused, how you said it, and the alternative you offered","Result, including any short-term cost you accepted"],keys:[["the pressure","asked me","pressure","wanted me to","sign off"],["your stance","i refused","i would not","i explained","i said"],["alternative / result","instead","proposed","result","we"]]},
+{id:15,cat:"behav",src:"std",q:"How do you handle a supervisor who does not communicate information to you properly?",why:"Coordinators sit between PM and superintendent. They want a proactive fix, no blame.",hit:["Set a standing touchpoint and write the recap yourself","Meeting minutes and action-item logs as the single source of truth","Ask in the form that gets an answer: two options and a deadline"],keys:[["proactive touchpoint","weekly","daily","check-in","standing"],["written record","minutes","log","email","recap","written"],["no blame","not their fault","busy","understand"]]},
+{id:16,cat:"behav",src:"std",q:"Describe a time you had to deliver bad news about cost or schedule to a project manager or superintendent.",why:"The posting has you assessing cost and schedule impact before it reaches the PM. Early, factual, with options.",hit:["Long-lead gear slip, a failed inspection, or a change order bigger than expected","Bring the number, the driver, and two recovery options","Result: what the PM chose and how it landed with the owner"],keys:[["the news","slip","delay","over","behind","failed"],["quantified","days","weeks","$","percent","%"],["options / recovery","option","recover","re-sequence","overtime","expedite"]]},
+{id:17,cat:"behav",src:"po",q:"Tell me about a time you had to hold a subcontractor accountable for performance or safety.",why:"The posting says you may give trade contractors day-to-day direction and monitor progress. Show firmness with respect.",hit:["Corrective action tracking through closure at Dantega","Reference the subcontract scope and schedule, not opinion","Escalation ladder: foreman, sub PM, then your PM, in writing"],keys:[["specific sub issue","behind","deficien","unsafe","not"],["contract basis","subcontract","scope","schedule","spec"],["escalation / closure","documented","notice","closed","escalat","in writing"]]},
+
+{id:18,cat:"role",src:"po",q:"Walk me through how you handle a change order from field discovery to review with the project manager.",why:"Straight from the posting: pricing, processing, and assessing cost and schedule impact before the PM sees it.",hit:["Field discovery, photo, RFI or field directive, notice per contract","Takeoff the delta, gather sub pricing, apply markups, check the schedule fragnet","Log it, give the PM a one-page impact summary, track approval to the pay app"],keys:[["notice / documentation","notice","rfi","document","photo"],["pricing","price","takeoff","quantit","markup","sub pricing"],["schedule impact","schedule","fragnet","days","impact"],["tracking / log","log","track","pay app"]]},
+{id:19,cat:"role",src:"po",q:"How do you review a subcontractor's submittal before forwarding it to the design team?",why:"The posting wants compliance with scope, design documents, and coordination with other disciplines checked before the engineer sees it.",hit:["Spec section checklist: product data, listing, ratings, dimensions against drawings","Cross-discipline check: gear footprint vs. room, conduit routing vs. structure and piping","Stamp, log, track review durations against the submittal schedule"],keys:[["spec compliance","spec","specification","section","listed","rating"],["coordination with other trades","coordinat","clash","other trades","mechanical","structural"],["log and schedule","log","submittal schedule","turnaround","track"]]},
+{id:20,cat:"role",src:"po",q:"Describe your RFI process. How do you keep RFIs from stalling the schedule?",why:"Document control is a listed duty. They want the process and the urgency.",hit:["Write RFIs with a proposed answer and a required-by date tied to the schedule","Weekly aging review with the design team; escalate the ones on the critical path","Close the loop: distribute the answer, mark the drawings, update as-builts"],keys:[["proposed answer / need-by date","proposed","suggest","need by","required by","date"],["aging / follow up","aging","follow up","weekly","escalat","critical path"],["distribution / as-builts","distribute","as-built","mark","drawings"]]},
+{id:21,cat:"role",src:"po",q:"How do you perform quantity takeoffs and use them to report progress? For electrical scope, what would you track?",why:"First bullet in the posting. Electrical progress is earned by installed quantities, not by feel.",hit:["Bluebeam and On-Screen Takeoff; baseline quantities by system and area","Electrical units: conduit LF by size, wire and cable LF, terminations, devices, cable tray, gear set and energized","Weekly installed quantities against baseline gives earned percent complete and productivity"],keys:[["takeoff tools / method","bluebeam","on-screen","takeoff","quantities"],["electrical units","conduit","wire","cable","termination","tray","device","gear"],["earned progress","percent complete","earned","installed","productivity","weekly"]]},
+{id:22,cat:"role",src:"po",q:"What is your experience with commissioning or pre-commissioning?",why:"The posting has you supporting Cx and witnessing systems commissioning. Be honest about the depth and show the sequence.",hit:["Startup, TAB, and commissioning tasks you built into the Babcock schedule ahead of CofO","Pre-functional checklists, point-to-point, megger and torque records for electrical","Witnessing and sign-off, deficiency tracking to closure"],keys:[["sequence","startup","pre-functional","functional","checklist","tab"],["electrical tests","megger","insulation","torque","point-to-point","energiz"],["witness / documentation","witness","sign","deficien","closeout"]]},
+{id:23,cat:"role",src:"po",q:"How do you administer a subcontract: defining scope, answering inquiries, and monitoring progress?",why:"Posting language verbatim. Scope gaps and progress reporting are where coordinators earn their keep.",hit:["Scope letter built from the spec sections and the bid tab; inclusions and exclusions by line","Single point of contact for inquiries, answers logged","Progress by installed quantities against the schedule, feeding the pay app"],keys:[["scope definition","scope","inclusion","exclusion","spec section","bid"],["inquiries handled","question","inquir","answer","respond"],["progress monitoring","progress","percent","pay app","schedule"]]},
+{id:24,cat:"role",src:"po",q:"How do you keep as-built drawings current on a fast-moving job?",why:"Listed under document control. As-builts done at closeout are a red flag to an industrial owner.",hit:["Weekly redline walk with the foreman; changes marked when the RFI or CO is closed","Bluebeam or PlanGrid single current set, dated","Tie as-built status to the monthly pay app"],keys:[["cadence","weekly","daily","every","as we go"],["tools / single set","bluebeam","plangrid","redline","current set"],["tied to payment / closeout","pay app","closeout","turnover"]]},
+{id:25,cat:"role",src:"res",q:"Tell me about your experience with electrical work specifically.",why:"Your resume is broad, not electrical. Answer honestly and show how much of the coordinator's electrical job you already know.",hit:["Coordinated Div 26/27/28 on commercial work: rough-in inspections, gear procurement, MEP trim","NFPA 70E certified; understand arc flash boundaries and LOTO from the safety side","Babcock schedule: 40-day electrical gear procurement was the near-critical driver","Gap plan: ride with the electrical superintendent, learn PCL's self-perform standards"],keys:[["coordination experience","div 26","electrical","rough-in","gear","mep"],["nfpa 70e / safety","70e","arc flash","loto","lockout"],["honest gap + plan","not an electrician","learn","ride","superintendent","gap"]]},
+{id:26,cat:"role",src:"po",q:"The posting mentions building codes and ASME piping codes. What is your familiarity with those?",why:"Honest calibration question. Coordinators on industrial jobs sign off on AHJ and code compliance.",hit:["ICC-certified inspector; IBC and inspection hold points are daily work","NEC through NFPA 70E and electrical rough-in inspections","ASME B31.3 process piping and B31.1 power piping: know what they are, how you would map spec sections to code requirements and hold points"],keys:[["icc / ibc","icc","ibc","building code","inspector"],["nec","nec","national electrical","70"],["asme named honestly","asme","b31","piping","learn"]]},
+{id:27,cat:"role",src:"po",q:"What software do you use daily, and how quickly do you pick up a new system like PCL's Baseplate?",why:"The posting names Baseplate and a strong aptitude for adopting technology.",hit:["Procore, Bluebeam, PlanGrid, P6, MS Project, On-Screen Takeoff, Quick Bid, advanced Excel","A story: the last system you learned and how fast you were productive","Baseplate: ask what modules the coordinator lives in and commit to learning it in week one"],keys:[["daily tools","procore","bluebeam","p6","project","excel"],["learning speed story","learned","picked up","within","week"],["baseplate curiosity","baseplate","ask","learn"]]},
+{id:28,cat:"role",src:"po",q:"Describe a time you suggested a value-added or alternative construction method or material to a designer or engineer.",why:"Posting duty: consult with designers when reviewing drawings. Even a small substitution counts.",hit:["Routing change, material substitution, or sequence change that saved time or money","How you brought it: RFI or sketch with cost and schedule numbers","Result and whether it was adopted"],keys:[["the alternative","alternative","instead","substitut","reroute","proposed"],["how you presented it","rfi","sketch","showed","cost","schedule"],["result","approved","adopted","saved","accepted"]]},
+{id:29,cat:"role",src:"po",q:"How would you review drawings for constructability and coordination problems before they reach the field?",why:"The posting has you resolving constructability and site coordination issues during design-team inspections.",hit:["Overlay disciplines: electrical routing against structure, piping, ductwork, and access clearances","Working clearance in front of gear, conduit fill, expansion, penetrations","Log issues as RFIs early with the schedule date they must be answered by"],keys:[["overlay / clash review","overlay","clash","coordinat","other disciplines"],["electrical specifics","clearance","conduit","penetration","routing","gear"],["early rfi with dates","rfi","early","before","date"]]},
+
+{id:30,cat:"hse",src:"pcl",q:"How familiar are you with construction safety standards, and how do you apply them day to day?",why:"PCL will not compromise safety. This is your best category; land it without preaching.",hit:["OSHA 510 and 30, EM 385-1-1, HAZWOPER, NFPA 70E, MSHA Part 46, First Aid/CPR","Daily: JHA and pre-task plan review, toolbox talks, jobsite walks, corrective-action closure","Compliance binders and subcontractor onboarding you maintain at Triun"],keys:[["credentials","osha","em 385","70e","hazwoper","msha"],["daily practice","jha","pre-task","toolbox","walk","inspection"],["records / onboarding","binder","onboarding","documentation","record"]]},
+{id:31,cat:"hse",src:"std",q:"What would you do if you saw a subcontractor's crew working unsafely on your project?",why:"Tests whether you act in the moment and follow through in the system.",hit:["Stop the work, remove the immediate hazard, talk to the foreman respectfully","Document it, notify your superintendent and PCL safety, and track the corrective action to closure","Follow-up: retraining, revised JHA, and a check that it stuck"],keys:[["stop work now","stop","immediately","pause"],["notify / document","document","superintendent","safety","report"],["corrective action follow-up","corrective","retrain","jha","follow"]]},
+{id:32,cat:"hse",src:"res",q:"How would you approach heat illness prevention on an industrial site in Chandler, Arizona?",why:"Chandler summers exceed 110°F. Location-specific and personal to you; share only what you are comfortable sharing.",hit:["Water, shade, rest cycles, acclimatization for new and returning workers, buddy system","Schedule the heaviest work early; heat index triggers in the pre-task plan","Someone trained to spot early signs and an emergency response plan on every crew"],keys:[["water shade rest","water","shade","rest","break"],["acclimatization / scheduling","acclimat","early","schedule","heat index","trigger"],["recognition / response","signs","symptoms","trained","emergency","response"]]},
+{id:33,cat:"hse",src:"gd",q:"What does quality mean to you, and how do you verify it in the field?",why:"Asked at PCL. Tie quality to first-time-right installs and documented conformance, not slogans.",hit:["Conformance to contract documents verified by inspection and material verification","Deficiency logs closed with photos; ICC inspector mindset","Quality protects schedule: no rework, clean AHJ inspections"],keys:[["conformance / documents","conformance","contract document","spec","drawings"],["verification method","inspect","checklist","photo","verify","deficien"],["link to schedule / cost","rework","schedule","first time"]]},
+
+{id:34,cat:"plan",src:"po",q:"Have you created and scheduled a project in the $1.5M to $3M range? Walk me through how you build a schedule.",why:"A stated qualification. The Babcock Building A schedule is your proof.",hit:["Babcock: 178 calendar days NTP to completion, submittal chains for 17 packages, procurement, AHJ hold points, Cx, closeout","Method: WBS from the bid tab and spec sections, FS/SS/FF logic, calendar and holidays, cost loading","Long-lead drivers found early: HVAC equipment and electrical gear at 40 working days"],keys:[["specific schedule","babcock","178","days","p6","ms project"],["method","wbs","logic","predecessor","critical path","milestone","calendar"],["long-lead / risk","long-lead","procurement","gear","risk"]]},
+{id:35,cat:"plan",src:"std",q:"How do you accurately assess the progress of each project you manage?",why:"Efficiency and profitability question. Installed quantities and look-aheads beat gut feel.",hit:["Installed quantities against baseline takeoff for earned percent complete","Weekly schedule update and three-week look-ahead with the superintendent","Daily reports: workforce, activities, deliveries, delays, tied to the pay app"],keys:[["earned quantities","quantit","percent complete","earned","installed"],["schedule update / look-ahead","look-ahead","update","weekly","three week"],["daily reports","daily report","workforce","pay app"]]},
+{id:36,cat:"plan",src:"gd",q:"What do you look for when evaluating a subcontractor's bid?",why:"Asked at PCL. Coordinators collect and level sub pricing; scope leveling matters more than price.",hit:["Scope leveling against spec sections: inclusions, exclusions, alternates, unit prices","Capacity, safety record (EMR), references, similar work, bonding","Schedule alignment and lead times, not just the bottom number"],keys:[["scope leveling","scope","inclusion","exclusion","level"],["qualifications / safety record","safety","emr","reference","capacity","bond"],["schedule / lead time","schedule","lead time","manpower"]]},
+{id:37,cat:"plan",src:"gd",q:"Do you have experience estimating costs for materials, equipment and labor?",why:"Asked at PCL. You list estimator on your resume; be concrete.",hit:["Quantity takeoffs, sub and vendor bid solicitation, pricing analysis, bid preparation","Tools: On-Screen Takeoff, Quick Bid, Excel","Estimate updates and forecasts during the job at Dantega"],keys:[["takeoff / pricing","takeoff","pricing","bid","estimate"],["tools","on-screen","quick bid","excel"],["forecasting during construction","forecast","update","cost to complete"]]},
+{id:38,cat:"plan",src:"po",q:"How do you prioritize when the PM, the superintendent, and a subcontractor all need something from you at the same time?",why:"Posting: multitask, prioritize your own work, delegate simple tasks. Show a rule, not a scramble.",hit:["Rule: anything stopping work in the field first, then anything with a contractual clock, then everything else","Tell each person when they will hear back; write it on the action-item log","Delegate what can be delegated and check it later"],keys:[["clear rule","first","priority","field","stops work","contract"],["communicate expectations","tell","let them know","when","expect"],["delegate / log","delegat","log","list"]]},
+
+{id:39,cat:"close",src:"gd",q:"Are you willing to relocate to Chandler and travel to project sites? Which location are you comfortable commuting to?",why:"Asked in PCL's HR round. You are in San Antonio; the posting lists Chandler, Dallas, Houston, San Antonio.",hit:["Give a clear yes with a realistic availability date and a plan","Show you know Chandler's project pipeline is why you want that office","Confirm travel flexibility for Texas sites if useful"],keys:[["clear yes / date","yes","relocat","available","weeks","date"],["why chandler","chandler","arizona","pipeline"],["travel flexibility","travel","flexible","texas"]]},
+{id:40,cat:"close",src:"std",q:"What are your salary expectations?",why:"Standard HR-round question. Give a researched range for Chandler, then pivot to total compensation.",hit:["State a range you have researched for coordinators in the Phoenix industrial market; anchor on the top half","Mention PCL's total package: employee ownership, discretionary bonus, 401(k) match","Ask what the band for the role is"],keys:[["range given","range","thousand","k","between"],["total compensation","ownership","bonus","401","benefit","total"],["ask their band","band","budget","what is the range"]]},
+{id:41,cat:"close",src:"std",q:"The posting prefers four to seven years of experience. Why are you qualified?",why:"You have five-plus, so this is about depth. Count the years and name what you owned.",hit:["Five-plus years: 4.5 years as APM and assistant super, plus coordinator and internship","Owned budgets, schedules, pay apps, change orders across concurrent projects","Credentials and the December degree exceed the education preference"],keys:[["years counted","five","5","years"],["ownership of duties","owned","managed","responsible","ran"],["education / credentials","degree","osha","certif","icc"]]},
+{id:42,cat:"close",src:"std",q:"What questions do you have for us?",why:"Always the last question. Two or three that show you understand PCL Industrial's Arizona work.",hit:["Which projects would this coordinator start on, and how much is self-perform electrical versus subcontracted?","How does the team use Baseplate day to day, and what does onboarding look like through the College of Construction?","What does the path from coordinator to project manager look like in the Phoenix district?","How is site HSE reporting shared between the coordinator, superintendent and the HSE team?"],keys:[["project-specific question","project","self-perform","start on"],["systems / development","baseplate","college","training","onboard"],["growth path","path","project manager","grow"]]}
+];
+const CAND=`Daniel Orhiunu, San Antonio TX. 5+ years construction. Now Project Coordinator at Triun Construction (Mar 2026–present): schedules, submittals, RFIs, change orders, punch lists, sub pricing for bids/buyout, daily reports, meeting minutes, action-item logs, safety & compliance binders. Before: Assistant Project Manager / Assistant Superintendent at Dantega Construction (Aug 2021–Mar 2026): budgets, schedules, forecasts, pay apps, change orders, estimate updates across concurrent projects; drawing/spec/RFI/submittal review; daily field coordination with supers, subs, crews; jobsite inspections, deficiency and corrective-action tracking; JHA and pre-task plan review; sub onboarding, toolbox talks. Internship: Associate Project Engineer, Performance Contracting Inc., Las Vegas (2021): QA inspections, takeoffs, RFIs/submittals. Sectors: commercial, mission critical, heavy civil, federal, municipal. Software: Procore, Bluebeam, On-Screen Takeoff, Quick Bid, Primavera P6, MS Project, PlanGrid, AutoCAD, advanced Excel. Certs: OSHA 510, OSHA 30, EM 385-1-1 (40h), HAZWOPER 40h, ICC Residential Building Inspector, NFPA 70E, MSHA Part 46, First Aid/CPR/AED, Scaffold Safety, TWIC. Education: BAAS Safety & Health, East Texas A&M, expected Dec 2026 (4.0 GPA); AS Engineering 2018. Recent work sample: built a 178-calendar-day MS Project CPM schedule for Babcock Building A build-out (17 submittal packages with review/procurement chains, AHJ hold points, HVAC and electrical gear 40-day long-lead procurement as near-critical drivers, startup/TAB/commissioning, closeout, alternates). Gaps: has coordinated Div 26 electrical but not self-performed it; ASME piping codes are new; relocating from San Antonio to Chandler.`;
+const ROLE=`PCL Industrial Services, Inc. — Electrical Industrial Project Coordinator, Chandler AZ (req 11154). Duties: quantity takeoffs and surveys for progress reporting; review/direct trade contractor work per schedule; subcontract administration (scope, inquiries, progress); consult designers on drawings and suggest value-added alternatives; monitor design team on submittal schedule; support pre-commissioning/commissioning; assist PM and superintendent on HSE, cost, schedule, quality reporting; change management and change order pricing/processing/impact assessment; site inspections with design team, AHJ and code compliance sign-off, witness commissioning; review sub submittals for scope/design/coordination compliance; document control (RFIs, shop drawings, submittals, as-builts). Qualifications: 4–7 yrs operational construction preferred; trade cert or diploma/degree in CM or engineering; drawings/specs, HSE, quality; construction law, building codes, ASME piping codes; communication; fast-paced; planning/prioritizing/delegating; administer subcontracts; document control; create and schedule projects $1.5M–$3M; MS Office and Baseplate, adopts new tech. Company: 100% employee-owned; safety is non-negotiable; Industrial Services HQ moved to Phoenix, growing on self-perform electrical for semiconductor, data centers, water/wastewater, power distribution, mining; College of Construction training; values: open/candid/truthful, keep learning, lead by example.`;
+
+/* ---------- state ---------- */
+const $=s=>document.querySelector(s);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let history=store.get("pcl.history",[]);
+const settings=Object.assign({voice:true,think:15,cap:180,auto:true},store.get("pcl.settings",{}));
+let sample=null, sampleReady=false;
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+
+/* ---------- bank ---------- */
+let filter="all";
+function renderTabs(){
+  const t=$("#tabs"); t.innerHTML="";
+  const all=[["all","All"],...Object.entries(CATS)];
+  all.forEach(([k,n])=>{const b=document.createElement("button");b.className="tab";b.textContent=n+(k==="all"?"":" · "+Q.filter(q=>q.cat===k).length);b.setAttribute("aria-pressed",String(filter===k));b.onclick=()=>{filter=k;renderTabs();renderBank()};t.appendChild(b)});
+}
+let openQ=null;
+function renderBank(){
+  const list=Q.filter(q=>filter==="all"||q.cat===filter);
+  $("#bankCount").textContent=list.length+" shown";
+  const el=$("#qlist"); el.innerHTML="";
+  list.forEach(q=>{
+    const d=document.createElement("div"); d.className="q";
+    const src=SRC[q.src];
+    const best=bestScore(q.id);
+    d.innerHTML=`<button class="q-head" aria-expanded="${openQ===q.id}"><span class="q-num">${String(q.id).padStart(2,"0")}</span><span class="q-text">${q.q}</span><span class="q-src ${src[1]}">${best!=null?`<span class="score-pill ${cls(best)}" style="margin-right:8px">${best.toFixed(1)}</span>`:""}${src[0]}</span></button>`;
+    d.querySelector(".q-head").onclick=()=>{openQ=openQ===q.id?null:q.id;renderBank()};
+    if(openQ===q.id){
+      const b=document.createElement("div"); b.className="q-body";
+      b.innerHTML=`<div><h4>Why they ask</h4><p>${q.why}</p></div><div><h4>Hit these from your resume</h4><ul>${q.hit.map(h=>`<li>${h}</li>`).join("")}</ul></div><div class="q-actions"><button class="btn primary sm" data-p="${q.id}">Practice this one</button></div>`;
+      b.querySelector("[data-p]").onclick=()=>startSession({name:"Single question",ids:[q.id],cap:settings.cap,think:settings.think,retry:true});
+      d.appendChild(b);
+    }
+    el.appendChild(d);
+  });
+}
+function bestScore(id){const h=history.filter(e=>e.qid===id&&e.overall!=null);return h.length?Math.max(...h.map(e=>e.overall)):null}
+function cls(s){return s>=4?"s-good":s>=3?"s-warn":"s-bad"}
+
+/* ---------- log ---------- */
+function renderLog(){
+  const el=$("#log");
+  if(!history.length){el.innerHTML=`<p class="empty">No answers yet. Start a session and your scores land here.</p>`;$("#weakCount").textContent="Needs a past session";return}
+  const recent=[...history].reverse().slice(0,12);
+  el.innerHTML=recent.map((e,i)=>`<div class="e" data-i="${history.length-1-i}" tabindex="0"><span class="qq" title="${e.q}">${e.q}</span>${e.overall!=null?`<span class="score-pill ${cls(e.overall)}">${e.overall.toFixed(1)}</span>`:`<span class="score-pill" style="background:var(--surface);color:var(--muted)">—</span>`}</div>`).join("");
+  el.querySelectorAll(".e").forEach(x=>{const f=()=>showPast(history[+x.dataset.i]);x.onclick=f;x.onkeydown=ev=>{if(ev.key==="Enter")f()}});
+  const scored=history.filter(e=>e.overall!=null);
+  const w=weakest();$("#weakCount").textContent=w.length?`${w.length} question${w.length>1?"s":""} · avg ${(w.reduce((a,id)=>a+bestScore(id),0)/w.length).toFixed(1)}`:(scored.length?"Not enough scored answers":"Needs a past session");
+}
+function weakest(){const ids=[...new Set(history.filter(e=>e.overall!=null).map(e=>e.qid))];return ids.sort((a,b)=>bestScore(a)-bestScore(b)).slice(0,5)}
+$("#clearLog").onclick=()=>{if(!history.length)return;if(confirm("Clear all saved answers and scores in this browser?")){history=[];store.set("pcl.history",history);renderLog();renderBank()}};
+
+/* ---------- settings ---------- */
+$("#optVoice").checked=settings.voice;$("#optThink").value=String(settings.think);$("#optCap").value=String(settings.cap);$("#optAuto").checked=settings.auto;
+function saveSettings(){settings.voice=$("#optVoice").checked;settings.think=+$("#optThink").value;settings.cap=+$("#optCap").value;settings.auto=$("#optAuto").checked;store.set("pcl.settings",settings)}
+["#optVoice","#optThink","#optCap","#optAuto"].forEach(s=>$(s).onchange=saveSettings);
+if(!("speechSynthesis" in window)){$("#optVoice").checked=false;$("#optVoice").disabled=true}
+
+/* ---------- support checks ---------- */
+(function(){
+  const el=$("#micSupport");
+  if(!SR){el.className="support bad";el.innerHTML=`<span class="dot"></span><span>This browser has no speech recognition. Open the page in Chrome, Edge, or Safari to speak your answers. You can still type them here.</span>`}
+  else{el.innerHTML=`<span class="dot"></span><span>Speech recognition is available. Your browser will ask for microphone access on the first question. If it is blocked inside this frame, open the page in its own tab and try again.</span>`}
+})();
+(async function(){
+  const cs=$("#coachState");
+  try{ if(window.claude&&typeof window.claude.use==="function"){sample=await window.claude.use("sample")} }catch(e){sample=null}
+  sampleReady=true;
+  cs.textContent=sample?"Coach: Claude grades each answer":"Coach: built-in scoring (Claude not available in this view)";
+})();
+
+/* ---------- session ---------- */
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=(cat,n,exclude=[])=>shuffle(Q.filter(q=>q.cat===cat&&!exclude.includes(q.id))).slice(0,n).map(q=>q.id);
+function buildMode(m){
+  if(m==="full"){const ids=[1,...pick("fit",1,[1]),...pick("behav",3),...pick("role",3),...pick(Math.random()<.5?"hse":"plan",1),42];return{name:"Full mock",ids,cap:settings.cap,think:settings.think,retry:true}}
+  if(m==="spark"){const ids=[1,...pick("fit",1,[1]),...pick("behav",3),...pick("role",2),...pick("hse",1)];return{name:"Spark Hire drill",ids,cap:180,think:30,retry:false,spark:true}}
+  if(m==="behav")return{name:"Behavioral only",ids:shuffle(Q.filter(q=>q.cat==="behav").map(q=>q.id)),cap:settings.cap,think:settings.think,retry:true};
+  if(m==="role")return{name:"Technical only",ids:shuffle(Q.filter(q=>q.cat==="role").map(q=>q.id)),cap:settings.cap,think:settings.think,retry:true};
+  if(m==="rapid")return{name:"Rapid fire",ids:shuffle(Q.map(q=>q.id)).slice(0,15),cap:75,think:0,retry:false};
+  if(m==="weak"){const w=weakest();if(!w.length){alert("Score a few answers first, then this mode re-asks your weakest five.");return null}return{name:"Retry weakest",ids:w,cap:settings.cap,think:settings.think,retry:true}}
+}
+document.querySelectorAll(".mode").forEach(b=>b.onclick=()=>{const s=buildMode(b.dataset.mode);if(s)startSession(s)});
+
+let S=null; // session
+function startSession(cfg){
+  S={cfg,i:0,results:[],phase:"listen"};
+  openOverlay(); askCurrent();
+}
+const root=$("#overlayRoot");
+let card=null;
+function openOverlay(){root.innerHTML=`<div class="overlay" role="dialog" aria-modal="true" aria-labelledby="qTitle"><div class="card" id="card"></div></div>`;card=$("#card");document.body.style.overflow="hidden";document.addEventListener("keydown",escClose)}
+function closeOverlay(){stopEverything();root.innerHTML="";card=null;document.body.style.overflow="";document.removeEventListener("keydown",escClose);renderLog();renderBank()}
+function escClose(e){if(e.key==="Escape"){if(S&&S.phase!=="summary"&&!confirm("End this session?"))return;closeOverlay()}}
+
+/* timers, speech */
+let tick=null, t0=0, elapsed=0, thinkLeft=0, rec=null, wantRec=false, finalText="", interim="", typed=false, micBlocked=false;
+function stopEverything(){clearInterval(tick);tick=null;wantRec=false;try{rec&&rec.stop()}catch(e){}rec=null;try{window.speechSynthesis&&speechSynthesis.cancel()}catch(e){}}
+const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`;
+
+function curQ(){return Q.find(q=>q.id===S.cfg.ids[S.i])}
+function header(phase){
+  const q=curQ(),src=SRC[q.src][0];
+  const phases=["listen","think","answer","feedback"];
+  const idx=phases.indexOf(phase);
+  return `<div class="card-top"><div class="eyebrow"><span>${S.cfg.name}</span><span>Question ${S.i+1} of ${S.cfg.ids.length}</span><span>${CATS[q.cat]}</span><span>${src}</span></div><div class="phases">${phases.filter(p=>p!=="think"||S.cfg.think>0).map(p=>`<span class="ph ${p===phase?"on":phases.indexOf(p)<idx?"done":""}">${p}</span>`).join("")}</div></div>`;
+}
+function askCurrent(){
+  stopEverything();finalText="";interim="";typed=false;elapsed=0;S.phase="listen";
+  const q=curQ();
+  card.innerHTML=header("listen")+`<div class="card-q"><h2 id="qTitle">${q.q}</h2><p class="hint">${S.cfg.spark?"One take. Look at the camera, answer in under three minutes.":"Aim for 60 to 120 seconds. Situation, what you did, the result, and what it says about you for this role."}</p></div>
+  <div class="stage"><div class="micwrap"><div class="think" id="thinkNum">${S.cfg.think>0?S.cfg.think:"—"}</div><div class="timer-l">${S.cfg.think>0?"think time":"ready"}</div></div><div><div class="transcript empty" id="ts">${settings.voice&&"speechSynthesis" in window?"Reading the question…":"Take a breath. The mic starts when think time ends."}</div></div></div>
+  <div class="card-act"><button class="btn primary" id="startNow">Start answering now</button><button class="btn ghost" id="skipQ">Skip</button><span class="spacer"></span><button class="btn ghost" id="endS">End session</button></div>`;
+  $("#startNow").onclick=beginAnswer;$("#skipQ").onclick=nextQ;$("#endS").onclick=()=>{if(confirm("End this session?"))closeOverlay()};
+  const afterSpeak=()=>{if(S.phase!=="listen")return;if(S.cfg.think>0)beginThink();else beginAnswer()};
+  if(settings.voice&&"speechSynthesis" in window){
+    try{
+      speechSynthesis.cancel();
+      const u=new SpeechSynthesisUtterance(q.q);u.rate=.95;u.lang="en-US";
+      const vs=speechSynthesis.getVoices();const v=vs.find(x=>/en-US/i.test(x.lang)&&/Google|Samantha|Natural|Aria|Zira|Daniel/i.test(x.name))||vs.find(x=>/en/i.test(x.lang));if(v)u.voice=v;
+      let done=false;const fin=()=>{if(done)return;done=true;afterSpeak()};u.onend=fin;u.onerror=fin;setTimeout(fin,Math.min(15000,q.q.length*90+1500));
+      speechSynthesis.speak(u);
+    }catch(e){afterSpeak()}
+  }else afterSpeak();
+}
+function beginThink(){
+  S.phase="think";thinkLeft=S.cfg.think;
+  card.querySelector(".card-top").outerHTML=header("think");
+  $("#ts").textContent="Think. What is the one example that proves it?";
+  const n=$("#thinkNum");n.textContent=thinkLeft;
+  clearInterval(tick);tick=setInterval(()=>{thinkLeft--;if(thinkLeft<=0){clearInterval(tick);beginAnswer();return}n.textContent=thinkLeft},1000);
+}
+function beginAnswer(){
+  clearInterval(tick);S.phase="answer";t0=Date.now();elapsed=0;
+  try{speechSynthesis&&speechSynthesis.cancel()}catch(e){}
+  card.querySelector(".card-top").outerHTML=header("answer");
+  const stage=card.querySelector(".stage");
+  stage.innerHTML=`<div class="micwrap"><button class="mic" id="mic" aria-pressed="false" aria-label="Toggle microphone" ${SR?"":"disabled"}><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3M9 21h6"/></svg></button><div class="timer" id="timer">0:00</div><div class="timer-l" id="timerL">${S.cfg.cap?"cap "+fmt(S.cfg.cap):"guide 2:00"}</div></div><div><div class="transcript empty" id="ts">${SR?"Listening… speak your answer.":"Type your answer below."}</div><div id="typeWrap" ${SR?"hidden":""}><textarea class="type" id="typed" placeholder="Type your answer here…"></textarea></div><div class="note" style="padding:8px 0 0" id="micNote"></div></div>`;
+  card.querySelector(".card-act").innerHTML=`<button class="btn primary" id="doneA">Done answering</button>${SR?`<button class="btn ghost" id="typeToggle">Type instead</button>`:""}<button class="btn ghost" id="skipQ">Skip</button><span class="spacer"></span><button class="btn ghost" id="endS">End session</button>`;
+  $("#doneA").onclick=finishAnswer;$("#skipQ").onclick=nextQ;$("#endS").onclick=()=>{if(confirm("End this session?"))closeOverlay()};
+  if(SR){$("#typeToggle").onclick=()=>{typed=!typed;$("#typeWrap").hidden=!typed;if(typed){stopRec();$("#typed").value=(finalText+" "+interim).trim();$("#typed").focus()}else{finalText=$("#typed").value;interim="";renderTs()}};$("#mic").onclick=()=>{wantRec?stopRec():startRec()}}
+  else{$("#typed").focus()}
+  tick=setInterval(()=>{elapsed=(Date.now()-t0)/1000;const t=$("#timer");if(!t)return;t.textContent=fmt(elapsed);if(S.cfg.cap&&elapsed>=S.cfg.cap){finishAnswer();return}if((S.cfg.cap&&elapsed>S.cfg.cap-20)||(!S.cfg.cap&&elapsed>120))t.classList.add("over")},250);
+  if(SR&&settings.auto)startRec();
+}
+function renderTs(){const ts=$("#ts");if(!ts)return;const has=(finalText+interim).trim().length>0;ts.className="transcript"+(has?"":" empty");ts.innerHTML=has?`${esc(finalText)}<span class="int">${esc(interim)}</span>`:(wantRec?"Listening… speak your answer.":"Mic paused. Tap the mic to resume or type instead.");ts.scrollTop=ts.scrollHeight}
+function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}
+function startRec(){
+  if(!SR||micBlocked)return;
+  wantRec=true;
+  const r=new SR();rec=r;r.continuous=true;r.interimResults=true;r.lang="en-US";r.maxAlternatives=1;
+  r.onresult=e=>{interim="";for(let i=e.resultIndex;i<e.results.length;i++){const res=e.results[i];if(res.isFinal)finalText+=res[0].transcript.trim()+" ";else interim+=res[0].transcript}renderTs()};
+  r.onerror=e=>{if(e.error==="not-allowed"||e.error==="service-not-allowed"){micBlocked=true;wantRec=false;const n=$("#micNote");if(n)n.innerHTML=`<div class="alert bad" style="margin:0">The microphone was blocked. Allow it in the browser's site permissions, or open this page in its own tab (the frame may not pass microphone access through). Use "Type instead" for now.</div>`;if(!typed){$("#typeToggle")&&$("#typeToggle").click()}}
+    else if(e.error==="audio-capture"){wantRec=false;const n=$("#micNote");if(n)n.textContent="No microphone found. Plug one in or type your answer."}
+    /* no-speech and network errors: onend restarts */};
+  r.onend=()=>{const m=$("#mic");if(wantRec&&rec===r&&S&&S.phase==="answer"){setTimeout(()=>{if(wantRec&&rec===r){try{r.start()}catch(x){}}},200)}else if(m){m.classList.remove("live");m.setAttribute("aria-pressed","false");renderTs()}};
+  try{r.start();const m=$("#mic");if(m){m.classList.add("live");m.setAttribute("aria-pressed","true")}renderTs()}catch(x){wantRec=false}
+}
+function stopRec(){wantRec=false;try{rec&&rec.stop()}catch(e){}const m=$("#mic");if(m){m.classList.remove("live");m.setAttribute("aria-pressed","false")}renderTs()}
+
+/* ---------- scoring ---------- */
+const FILLERS=/\b(um+|uh+|erm|like,|you know|kind of|sort of|basically|actually|literally|i mean|so yeah)\b/gi;
+function analyze(text,secs,q){
+  const words=text.trim()?text.trim().split(/\s+/).length:0;
+  const fillers=(text.match(FILLERS)||[]).length;
+  const wpm=secs>5?Math.round(words/(secs/60)):0;
+  const low=text.toLowerCase();
+  const hits=q.keys.map(k=>({label:k[0],hit:k.slice(1).some(t=>low.includes(t))}));
+  const star={s:/\b(when|at (dantega|triun|pci|performance)|on a|we had|there was|project)\b/i.test(text),a:/\b(i (sat|pulled|called|asked|walked|built|set up|proposed|wrote|reviewed|coordinated|stopped|documented|priorit|delegat|told|flagged|created|tracked))\b/i.test(text),r:/\b(result|ended up|so we|saved|reduced|finished|on time|under budget|approved|closed|no rework|\d+%|\$\d)/i.test(text)};
+  const hasNum=/\d|\$|percent|days|weeks|hours|dollars/i.test(text);
+  return{words,fillers,wpm,hits,star,hasNum};
+}
+function localFeedback(a,q,secs){
+  const hitN=a.hits.filter(h=>h.hit).length, tot=a.hits.length;
+  const relevance=Math.max(1,Math.min(5,1+4*hitN/tot));
+  const structure=Math.max(1,Math.min(5,1+(a.star.s?1.3:0)+(a.star.a?1.4:0)+(a.star.r?1.3:0)));
+  const evidence=Math.max(1,Math.min(5,(a.words<40?1.5:a.words<90?2.8:3.6)+(a.hasNum?.8:0)+(a.star.r?.6:0)));
+  let delivery=5; if(a.fillers>=3)delivery-=1; if(a.fillers>=7)delivery-=1; if(a.wpm&&(a.wpm<100||a.wpm>180))delivery-=1; if(secs<25)delivery-=1.5; if(secs>150)delivery-=1; delivery=Math.max(1,delivery);
+  const overall=+(0.3*relevance+0.3*structure+0.2*evidence+0.2*delivery).toFixed(1);
+  const worked=[];const improve=[];
+  if(a.star.s)worked.push("You set the scene with a specific project or moment.");
+  if(a.star.a)worked.push("You spoke in first person about what you did, not what the team did.");
+  if(a.star.r)worked.push("You closed on a result.");
+  if(hitN>=Math.ceil(tot*.66))worked.push(`You covered ${hitN} of ${tot} points the interviewer is listening for.`);
+  if(!a.star.r)improve.push("End on the result: what got built, how many days or dollars, and what changed afterward.");
+  if(!a.star.a)improve.push("Use 'I' verbs: I pulled the spec, I called the sub, I re-sequenced. The panel is hiring you, not your last team.");
+  if(a.fillers>=3)improve.push(`${a.fillers} filler words. Replace them with a half-second pause.`);
+  if(secs<35)improve.push("Too short for a panel answer. Add the situation and one concrete number.");
+  if(secs>150)improve.push("Over two and a half minutes. Cut the backstory, keep the action and result.");
+  if(a.wpm>175)improve.push("Fast pace. Slow down on the result sentence.");
+  if(!worked.length)worked.push("You got an answer out under time pressure. Now shape it.");
+  if(!improve.length)improve.push("Tighten the opening sentence so the first ten seconds already name the example.");
+  return{scores:{structure,relevance,evidence,delivery},overall,worked,improve,missed:a.hits.filter(h=>!h.hit).map(h=>h.label),model:null,tip:overall>=4?"Strong. Rehearse it twice more so it sounds the same under lights.":"Re-record this one before moving on.",who:"Built-in coach: keyword and structure heuristics."};
+}
+async function claudeFeedback(transcript,q,secs,a){
+  const prompt=`You are a senior construction hiring manager coaching a candidate for a real interview. Grade the spoken answer below. Be specific, direct, and useful; no praise padding.
+
+ROLE: ${ROLE}
+
+CANDIDATE RESUME: ${CAND}
+
+QUESTION (${CATS[q.cat]}; ${SRC[q.src][0]}): "${q.q}"
+Why interviewers ask it: ${q.why}
+Points the interviewer listens for: ${q.hit.join(" | ")}
+
+CANDIDATE'S SPOKEN ANSWER (auto-transcribed, ${Math.round(secs)} seconds, ${a.words} words, ${a.fillers} filler words):
+"""${transcript}"""
+
+Return ONLY a JSON object with exactly these keys:
+{"scores":{"structure":1-5,"relevance":1-5,"evidence":1-5,"delivery":1-5},
+ "overall":number 1-5 with one decimal,
+ "worked":[2-3 short sentences on what genuinely landed],
+ "improve":[2-4 short, concrete fixes; quote his words where useful],
+ "missed":[resume facts or role points he should have used but did not; short labels; empty array if none],
+ "model":"a tightened 90-120 second spoken version of HIS answer in first person, plain conversational English, using only facts from his resume or his transcript (never invent projects, numbers, or employers), structured situation-action-result and ending on why it matters for this PCL role",
+ "tip":"one sentence he should remember for this question"}
+Scoring guide: structure = clear situation/action/result arc; relevance = answers this exact question for this exact role; evidence = specifics, numbers, named tools and standards; delivery = length (60-120s ideal), pace, filler words, confidence in phrasing. Transcription errors are not his fault; grade the substance.`;
+  const r=await sample.json(prompt,{cache:false,modelTier:"default"});
+  const n=x=>Math.max(1,Math.min(5,Number(x)||1));
+  return{scores:{structure:n(r.scores&&r.scores.structure),relevance:n(r.scores&&r.scores.relevance),evidence:n(r.scores&&r.scores.evidence),delivery:n(r.scores&&r.scores.delivery)},overall:+n(r.overall).toFixed(1),worked:arr(r.worked),improve:arr(r.improve),missed:arr(r.missed),model:typeof r.model==="string"?r.model:null,tip:typeof r.tip==="string"?r.tip:"",who:"Graded by Claude against the posting and your resume."};
+}
+const arr=x=>Array.isArray(x)?x.map(String):(x?[String(x)]:[]);
+
+async function finishAnswer(){
+  if(S.phase!=="answer")return;
+  clearInterval(tick);S.phase="feedback";
+  const secs=(Date.now()-t0)/1000;
+  stopRec();
+  const transcript=(typed?$("#typed").value:(finalText+" "+interim)).trim();
+  const q=curQ();
+  card.querySelector(".card-top").outerHTML=header("feedback");
+  const a=analyze(transcript,secs,q);
+  const stats=`<div class="stats"><div class="stat"><div class="v">${fmt(secs)}</div><div class="l">duration</div></div><div class="stat"><div class="v">${a.words}</div><div class="l">words</div></div><div class="stat"><div class="v">${a.wpm||"—"}</div><div class="l">words / min</div></div><div class="stat"><div class="v">${a.fillers}</div><div class="l">fillers</div></div></div>`;
+  card.querySelector(".stage").outerHTML=`<div class="fb" id="fb">${stats}<div class="transcript" style="max-height:160px;font-size:14.5px">${transcript?esc(transcript):"<i>No words captured.</i>"}</div><div class="thinking" id="thinking"><span class="spin"></span>${sample?"Claude is grading your answer…":"Scoring…"}</div></div>`;
+  card.querySelector(".card-act").innerHTML=`<button class="btn primary" id="nextQ" disabled>Next question</button>${S.cfg.retry?`<button class="btn ghost" id="retryQ">Retry this question</button>`:""}<span class="spacer"></span><button class="btn ghost" id="endS">End session</button>`;
+  $("#endS").onclick=()=>{closeOverlay()};
+  if(S.cfg.retry)$("#retryQ").onclick=askCurrent;
+  let fb;
+  if(!transcript||a.words<3){fb={scores:{structure:1,relevance:1,evidence:1,delivery:1},overall:1,worked:[],improve:["Nothing was captured. Check the mic indicator turns orange, or use Type instead."],missed:q.hit.slice(0,3),model:null,tip:"Try again.",who:"No answer recorded."}}
+  else{
+    while(!sampleReady)await new Promise(r=>setTimeout(r,100));
+    if(sample){try{fb=await claudeFeedback(transcript,q,secs,a)}catch(e){fb=localFeedback(a,q,secs);fb.who=`Built-in coach (Claude unavailable: ${e&&e.code?e.code:"error"}).`;if(e&&e.code==="not_granted"){sample=null;$("#coachState").textContent="Coach: built-in scoring"}}}
+    else fb=localFeedback(a,q,secs);
+  }
+  if(!S||S.phase!=="feedback")return;
+  const entry={qid:q.id,q:q.q,transcript,secs:Math.round(secs),words:a.words,fillers:a.fillers,overall:fb.overall,scores:fb.scores,worked:fb.worked,improve:fb.improve,missed:fb.missed,model:fb.model,tip:fb.tip,who:fb.who,ts:Date.now(),session:S.cfg.name};
+  history.push(entry);store.set("pcl.history",history);S.results.push(entry);
+  $("#thinking").outerHTML=feedbackHTML(entry,a);
+  const nb=$("#nextQ");nb.disabled=false;nb.textContent=S.i+1<S.cfg.ids.length?"Next question":"Finish session";nb.onclick=nextQ;nb.focus();
+}
+function barCls(v){return v>=4?"good":v>=3?"warn":"bad"}
+function feedbackHTML(e,a){
+  const sc=e.scores;const row=(k,l)=>`<div class="sc"><div class="l"><span>${l}</span><b>${(+sc[k]).toFixed(1)}</b></div><div class="bar ${barCls(sc[k])}"><i style="width:${(sc[k]/5)*100}%"></i></div></div>`;
+  const hits=a?a.hits:null;
+  return `<div class="overall"><div class="big">${e.overall.toFixed(1)}<small> / 5</small></div><p>${esc(e.tip||"")}</p></div>
+  <div class="scores">${row("structure","Structure")}${row("relevance","Relevance to role")}${row("evidence","Evidence & specifics")}${row("delivery","Delivery")}</div>
+  ${hits?`<div class="fb-sec"><h3>Points the interviewer listens for</h3><div>${hits.map(h=>`<span class="${h.hit?"tag-hit":"tag-miss"}">${h.hit?"✓":"○"} ${h.label}</span>`).join("")}</div></div>`:""}
+  ${e.worked&&e.worked.length?`<div class="fb-sec"><h3>What landed</h3><ul>${e.worked.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}
+  ${e.improve&&e.improve.length?`<div class="fb-sec"><h3>Make it stronger</h3><ul>${e.improve.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:""}
+  ${e.missed&&e.missed.length?`<div class="fb-sec"><h3>Left on the table</h3><div>${e.missed.map(x=>`<span class="tag-miss">${esc(x)}</span>`).join("")}</div></div>`:""}
+  ${e.model?`<div class="fb-sec"><h3>A tighter version, in your voice</h3><div class="model">${esc(e.model)}</div></div>`:""}
+  <div class="fb-sec"><div class="who">${esc(e.who||"")}</div></div>`;
+}
+function nextQ(){
+  stopEverything();
+  S.i++;
+  if(S.i>=S.cfg.ids.length){summary();return}
+  askCurrent();
+}
+function summary(){
+  S.phase="summary";
+  const r=S.results;const scored=r.filter(e=>e.overall!=null);
+  const avg=scored.length?(scored.reduce((a,e)=>a+e.overall,0)/scored.length):null;
+  const avgS=k=>scored.length?(scored.reduce((a,e)=>a+(+e.scores[k]||0),0)/scored.length).toFixed(1):"—";
+  card.innerHTML=`<div class="card-top"><div class="eyebrow"><span>${S.cfg.name}</span><span>Session complete</span></div></div>
+  <div class="card-q"><h2>${avg!=null?`Session average ${avg.toFixed(1)} of 5`:"Session complete"}</h2><p class="hint">${r.length} answered of ${S.cfg.ids.length}. ${avg==null?"":avg>=4?"You are interview-ready on these. Run the Spark Hire drill next to add the camera pressure.":avg>=3?"Solid base. Retry the two lowest and end every answer on a number.":"Rebuild the weak ones with one specific project each, then run this set again."}</p></div>
+  <div class="fb"><div class="sumgrid"><div class="stat"><div class="v">${avgS("structure")}</div><div class="l">structure</div></div><div class="stat"><div class="v">${avgS("relevance")}</div><div class="l">relevance</div></div><div class="stat"><div class="v">${avgS("evidence")}</div><div class="l">evidence</div></div><div class="stat"><div class="v">${avgS("delivery")}</div><div class="l">delivery</div></div><div class="stat"><div class="v">${r.reduce((a,e)=>a+e.fillers,0)}</div><div class="l">fillers total</div></div></div>
+  <div>${r.map((e,i)=>`<div class="sumrow"><span class="mono" style="color:var(--muted);font-size:12px">${String(i+1).padStart(2,"0")}</span><span>${e.q}</span>${e.overall!=null?`<span class="score-pill ${cls(e.overall)}">${e.overall.toFixed(1)}</span>`:""}</div>`).join("")||`<p class="empty">Nothing answered.</p>`}</div></div>
+  <div class="card-act"><button class="btn primary" id="closeS">Back to the room</button>${weakest().length?`<button class="btn ghost" id="weakS">Retry weakest five</button>`:""}</div>`;
+  $("#closeS").onclick=closeOverlay;const w=$("#weakS");if(w)w.onclick=()=>{const s=buildMode("weak");if(s){S=null;startSession(s)}};
+}
+function showPast(e){
+  S={cfg:{name:e.session||"Past answer",ids:[e.qid],retry:false},i:0,results:[],phase:"summary"};
+  openOverlay();
+  const q=Q.find(x=>x.id===e.qid);
+  card.innerHTML=`<div class="card-top"><div class="eyebrow"><span>Past answer</span><span>${new Date(e.ts).toLocaleString()}</span><span>${CATS[q.cat]}</span></div></div>
+  <div class="card-q"><h2>${q.q}</h2></div>
+  <div class="fb"><div class="stats"><div class="stat"><div class="v">${fmt(e.secs)}</div><div class="l">duration</div></div><div class="stat"><div class="v">${e.words}</div><div class="l">words</div></div><div class="stat"><div class="v">${e.fillers}</div><div class="l">fillers</div></div></div>
+  <div class="transcript" style="max-height:160px;font-size:14.5px">${esc(e.transcript||"")}</div>${e.overall!=null?feedbackHTML(e,null):""}</div>
+  <div class="card-act"><button class="btn primary" id="againP">Practice it again</button><span class="spacer"></span><button class="btn ghost" id="closeP">Close</button></div>`;
+  $("#closeP").onclick=closeOverlay;$("#againP").onclick=()=>{S=null;startSession({name:"Single question",ids:[q.id],cap:settings.cap,think:settings.think,retry:true})};
+}
+
+/* ---------- boot ---------- */
+if("speechSynthesis" in window){try{speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>{}}catch(e){}}
+renderTabs();renderBank();renderLog();
+})();
+</script>
