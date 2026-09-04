@@ -862,8 +862,9 @@
     // clearances summary (computed)
     var clStr = 'CLEARANCES TO P.L.:  LEFT ' + fmtFeet(ev.clearances.left) + '   RIGHT ' + fmtFeet(ev.clearances.right) + '   REAR ' + fmtFeet(ev.clearances.rear) + '   FRONT ' + fmtFeet(ev.clearances.front) +
       "   (REQ'D " + sb.side + "' / " + sb.side + "' / " + sb.rear + "' / " + sb.front + "')";
-    L.annot.push(textEl(tabX, yy + 0.6, clStr, T.small * 0.92, { anchor: 'start', spacing: 0.1, fill: ev.violations.length ? C.red : C.text }));
-    yy += 2.2;
+    var clDeferred = null; // when the rear yard is short the string would land on the dimension string: move it to the title area
+    if (yy + 1.2 > dimY - 2.0) { clDeferred = clStr; }
+    else { L.annot.push(textEl(tabX, yy + 0.6, clStr, T.small * 0.92, { anchor: 'start', spacing: 0.1, fill: ev.violations.length ? C.red : C.text })); yy += 2.2; }
     redNotes.forEach(function (t) { L.annot.push(textEl(tabX, yy + 0.6, t, T.small * 0.92, { anchor: 'start', fill: C.red, weight: 700 })); yy += 2.1; });
     if (dimY < yy + 0.5) { /* the rear-yard is short: nothing to do, dims sit above the string */ }
 
@@ -872,10 +873,10 @@
       'MAKE SURE ALL DRAINAGE RUN-OFF FLOWS AWAY FROM HOUSE FOUNDATION.',
       'PROVIDE PVC CONDUITS BELOW DRIVEWAYS FOR FUTURE LANDSCAPE WIRING'
     ];
-    var noteX = Math.max(lot.BR[0], lot.TR[0]) + 6.5, noteW = 26.5, noteY = lot.BR[1] - 26;
+    var noteX = Math.max(lot.BR[0], lot.TR[0]) + 6.5, noteW = 30, noteY = lot.BR[1] - 26;
     var maxX = noteX + noteW;
     siteNotes.forEach(function (n) {
-      var lines = wrap(n.toUpperCase(), 27);
+      var lines = wrap(n.toUpperCase(), 25);
       var h = lines.length * (T.note * 1.35) + 2.2;
       L.annot.push(rect(noteX, noteY, noteW, h, 'fill="' + C.page + '" stroke="' + C.box + '" stroke-width="' + f(SW.box) + '"'));
       lines.forEach(function (ln, i) { L.annot.push(textEl(noteX + 1.3, noteY + 1.1 + T.note * 1.0 + i * T.note * 1.35, ln, T.note, { anchor: 'start', spacing: 0.15 })); });
@@ -899,6 +900,7 @@
       L.annot.push(textEl(tx0, yTitle, 'SITE PLAN', T.title, { anchor: 'start', weight: 700, spacing: 0.9 }));
       L.annot.push(line(tx0, yTitle + 1.2, tx0 + textW('SITE PLAN', T.title, 'bold', 0.9), yTitle + 1.2, C.text, 0.22));
       L.annot.push(textEl(tx0, yTitle + 4.4, 'SCALE: 1/8" = 1\'-0"', T.scale, { anchor: 'start', spacing: 0.3 }));
+      if (clDeferred) L.annot.push(textEl(tx0, yTitle + 7.8, clDeferred, T.small * 0.92, { anchor: 'start', spacing: 0.1, fill: ev.violations.length ? C.red : C.text }));
       var addr = site.address_block || '738 SAWTOOTH DR. · LOT 48 · BLOCK 23 · N.C.B. 15850 · LACKLAND CITY SUBDIVISION · SAN ANTONIO, TX. · BEXAR COUNTY';
       var parts = addr.split(' · ');
       var l1 = parts.slice(0, 4).join(' · '), l2 = parts.slice(4).join(' · ');
@@ -907,7 +909,7 @@
       L.annot.push(textEl(vx1 - 3, yTitle + 3.2, l2.toUpperCase(), T.addr, { anchor: 'end', spacing: 0.25 }));
       if (spec.name) L.annot.push(textEl(vx1 - 3, yTitle + 6.4, String(spec.name).toUpperCase() + ' — CONCEPT STUDY, NOT FOR CONSTRUCTION', T.small * 0.85, { anchor: 'end', fill: C.slabStroke, spacing: 0.2 }));
     }
-    var vy1 = (showTitle ? yTitle + 9 : yBmax + curbDy + 11);
+    var vy1 = (showTitle ? yTitle + (clDeferred ? 10.8 : 9) : yBmax + curbDy + 11);
     var vw = vx1 - vx0, vh = vy1 - vy0;
 
     // ---- assemble --------------------------------------------------------------------------------------------
