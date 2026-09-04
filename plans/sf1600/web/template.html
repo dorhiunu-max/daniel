@@ -1,0 +1,388 @@
+<title>SF 1600 F</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #f5f4ef; --sheet: #ffffff; --ink: #1c1f24; --ink-2: #4a545d; --ink-3: #7d8790;
+    --rule: #cfd5d9; --rule-2: #e4e8eb; --accent: #1f5f7a; --accent-ink: #ffffff; --accent-soft: #e2eef3;
+    --tab-bg: #eceeed; --shadow: 0 1px 2px rgba(20, 30, 40, .08), 0 8px 24px -16px rgba(20, 30, 40, .25);
+    --sky: #bfe0f5;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #15181c; --sheet: #1d2126; --ink: #e8eaec; --ink-2: #b5bcc3; --ink-3: #7f8892;
+      --rule: #343b42; --rule-2: #2a3036; --accent: #6fb1c9; --accent-ink: #0f1c22; --accent-soft: #1c2f38;
+      --tab-bg: #22272d; --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -16px rgba(0, 0, 0, .8); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #15181c; --sheet: #1d2126; --ink: #e8eaec; --ink-2: #b5bcc3; --ink-3: #7f8892;
+    --rule: #343b42; --rule-2: #2a3036; --accent: #6fb1c9; --accent-ink: #0f1c22; --accent-soft: #1c2f38;
+    --tab-bg: #22272d; --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -16px rgba(0, 0, 0, .8); color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif; }
+  .cond { font-family: "IBM Plex Sans Condensed", "Arial Narrow", "IBM Plex Sans", sans-serif; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace; font-variant-numeric: tabular-nums; }
+  a { color: var(--accent); }
+  button:focus-visible, a:focus-visible, .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---- title strip (reads like a sheet title block) */
+  header.strip { position: sticky; top: 0; z-index: 20; background: var(--sheet); border-bottom: 2px solid var(--ink); box-shadow: var(--shadow); }
+  .strip-row { display: flex; align-items: stretch; gap: 0; max-width: 1400px; margin: 0 auto; padding: 0 16px; }
+  .plan-no { display: flex; flex-direction: column; justify-content: center; padding: 10px 18px 10px 0; border-right: 1px solid var(--rule); min-width: 130px; }
+  .plan-no .no { font-family: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif; font-weight: 700; font-size: 30px; line-height: 1; letter-spacing: .5px; white-space: nowrap; }
+  .plan-no .no small { font-size: 14px; font-weight: 600; color: var(--ink-2); margin-left: 4px; }
+  .plan-no .sub { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
+  .project { display: flex; flex-direction: column; justify-content: center; padding: 10px 18px; border-right: 1px solid var(--rule); }
+  .project .name { font-weight: 600; font-size: 14px; }
+  .project .addr { font-size: 12px; color: var(--ink-2); }
+  nav.tabs { display: flex; align-items: flex-end; gap: 2px; overflow-x: auto; margin-left: auto; padding-left: 12px; scrollbar-width: none; }
+  nav.tabs::-webkit-scrollbar { display: none; }
+  .tab { font: 600 12px/1 "IBM Plex Sans Condensed", "Arial Narrow", sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); background: var(--tab-bg); border: 1px solid var(--rule); border-bottom: none; padding: 11px 12px 10px; cursor: pointer; white-space: nowrap; border-radius: 3px 3px 0 0; }
+  .tab[aria-selected="true"] { background: var(--sheet); color: var(--ink); border-color: var(--ink); border-bottom: 2px solid var(--sheet); margin-bottom: -2px; }
+  .tab:hover { color: var(--ink); }
+
+  main { max-width: 1400px; margin: 0 auto; padding: 22px 16px 60px; }
+  section.panel { display: none; }
+  section.panel.active { display: block; }
+
+  /* ---- sheet frame */
+  .sheet { background: var(--sheet); border: 1px solid var(--ink); box-shadow: var(--shadow); margin-bottom: 22px; }
+  .sheet-head { display: flex; align-items: baseline; gap: 14px; padding: 10px 14px; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+  .sheet-head h2 { margin: 0; font: 700 18px/1.1 "IBM Plex Sans Condensed", "Arial Narrow", sans-serif; letter-spacing: .06em; text-transform: uppercase; text-wrap: balance; }
+  .sheet-head .scale { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-2); }
+  .sheet-head .tools { margin-left: auto; display: flex; gap: 6px; }
+  .btn { font: 600 12px/1 "IBM Plex Sans Condensed", sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); background: var(--tab-bg); border: 1px solid var(--rule); padding: 7px 10px; cursor: pointer; border-radius: 3px; }
+  .btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .drawing { overflow-x: auto; overflow-y: hidden; padding: 12px; background: #fff; }
+  .drawing.fit svg { width: 100%; height: auto; display: block; }
+  .drawing.full svg { display: block; }
+  .sheet-note { padding: 10px 14px; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--rule-2); }
+
+  /* ---- overview */
+  .hero { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr); gap: 22px; align-items: stretch; margin-bottom: 22px; }
+  .hero .view { position: relative; min-height: 380px; background: var(--sky); border: 1px solid var(--ink); box-shadow: var(--shadow); overflow: hidden; }
+  .hero .view canvas { display: block; }
+  .view-tools { position: absolute; left: 10px; bottom: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .view-tools .btn { background: rgba(255,255,255,.85); color: #1c1f24; border-color: rgba(0,0,0,.2); }
+  .view-msg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; color: #1c1f24; background: var(--sky); font-size: 14px; }
+  .tab-box { background: var(--sheet); border: 1px solid var(--ink); box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .tab-box h1 { margin: 0; padding: 14px 16px 6px; font: 700 26px/1.05 "IBM Plex Sans Condensed", "Arial Narrow", sans-serif; letter-spacing: .02em; text-wrap: balance; }
+  .tab-box .lede { margin: 0; padding: 0 16px 12px; color: var(--ink-2); font-size: 14px; max-width: 46ch; }
+  table.tab { width: 100%; border-collapse: collapse; font-family: "IBM Plex Mono", monospace; font-size: 13px; }
+  table.tab caption { text-align: left; padding: 8px 16px 4px; font: 600 11px/1 "IBM Plex Sans Condensed", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+  table.tab td { padding: 6px 16px; border-top: 1px solid var(--rule-2); }
+  table.tab td:last-child { text-align: right; font-weight: 500; }
+  table.tab tr.total td { border-top: 2px solid var(--ink); font-weight: 600; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); margin-top: auto; }
+  .fact { padding: 12px 16px; border-right: 1px solid var(--rule-2); }
+  .fact:last-child { border-right: none; }
+  .fact .k { font: 600 11px/1 "IBM Plex Sans Condensed", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  .fact .v { font-family: "IBM Plex Mono", monospace; font-size: 16px; margin-top: 4px; }
+
+  .compare { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .compare th { text-align: left; font: 600 11px/1.2 "IBM Plex Sans Condensed", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); padding: 10px 12px; border-bottom: 1px solid var(--ink); }
+  .compare td { padding: 8px 12px; border-bottom: 1px solid var(--rule-2); vertical-align: top; }
+  .compare td.num, .compare th.num { text-align: right; font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .compare td.delta { color: var(--accent); }
+  .compare tr.total td { border-top: 2px solid var(--ink); font-weight: 600; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .prose { max-width: 68ch; font-size: 15px; }
+  .prose h3 { font: 700 16px/1.2 "IBM Plex Sans Condensed", sans-serif; letter-spacing: .06em; text-transform: uppercase; margin: 22px 0 8px; }
+  .prose ul { padding-left: 20px; }
+  .prose li { margin: 4px 0; }
+  .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 10px 14px; margin: 14px 0; font-size: 14px; }
+  .sched { width: 100%; border-collapse: collapse; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; }
+  .sched th { text-align: left; font: 600 11px/1.2 "IBM Plex Sans Condensed", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); padding: 8px 10px; border-bottom: 1px solid var(--ink); }
+  .sched td { padding: 6px 10px; border-bottom: 1px solid var(--rule-2); }
+  .pad { padding: 14px 16px; }
+  .three-d { position: relative; height: min(70vh, 760px); min-height: 420px; background: var(--sky); }
+  .three-d canvas { display: block; }
+  @media (max-width: 900px) {
+    .hero, .two { grid-template-columns: 1fr; }
+    .plan-no { min-width: 0; }
+    .project { display: none; }
+    .facts { grid-template-columns: 1fr 1fr 1fr; }
+  }
+  @media (max-width: 560px) { .facts { grid-template-columns: 1fr; } .fact { border-right: none; border-bottom: 1px solid var(--rule-2); } }
+  @media print {
+    header.strip, .sheet-head .tools, .view-tools { display: none !important; }
+    body { background: #fff; color: #000; }
+    main { max-width: none; padding: 0; }
+    .sheet { box-shadow: none; page-break-inside: avoid; }
+    .drawing { overflow: visible; }
+    .drawing svg { width: 100% !important; height: auto !important; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<header class="strip">
+  <div class="strip-row">
+    <div class="plan-no">
+      <div class="no">SF 1600<small>F</small></div>
+      <div class="sub">Concept study</div>
+    </div>
+    <div class="project">
+      <div class="name">Dantega Homes · Daniel Orhiunu</div>
+      <div class="addr">738 Sawtooth Dr. · Lot 48, Block 23, NCB 15850 · San Antonio, TX</div>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Sheets" id="tabs"></nav>
+  </div>
+</header>
+
+<main>
+  <!-- ===================== OVERVIEW -->
+  <section class="panel active" id="panel-overview" role="tabpanel">
+    <div class="hero">
+      <div class="view" id="hero-view">
+        <div class="view-msg" id="hero-msg">Loading the 3D model…</div>
+        <div class="view-tools" id="hero-tools" hidden>
+          <button class="btn" data-view="front-left">Front-left</button>
+          <button class="btn" data-view="front-right">Front-right</button>
+          <button class="btn" data-view="rear-right">Rear</button>
+          <button class="btn" data-view="top">Above</button>
+        </div>
+      </div>
+      <div class="tab-box">
+        <h1>The SF 1258 “F” plan, grown to 1,600 sq ft</h1>
+        <p class="lede">Same three-bedroom diagram, same street face, every wall re-set on framing increments. Living area is measured the way the original sheet measures it: to the outside of frame, garage and porch excluded.</p>
+        <table class="tab" id="tabulation"><caption>Square footage tabulations</caption><tbody></tbody></table>
+        <div class="facts" id="facts"></div>
+      </div>
+    </div>
+
+    <div class="sheet">
+      <div class="sheet-head"><h2>Room by room</h2><span class="scale">clear dimensions · original vs. 1,600</span></div>
+      <div class="drawing fit" style="padding:0"><table class="compare" id="compare"></table></div>
+      <div class="sheet-note">Clear (inside-face) dimensions taken from the floor plans. Original values are from a transcription of the 2023 SF 1258 F sheets and read to about ±4"; the listing-style scan of the built house agrees within a few inches.</div>
+    </div>
+
+    <div class="two">
+      <div class="sheet">
+        <div class="sheet-head"><h2>Original · SF 1258 F</h2><span class="scale">1,258 sf living</span></div>
+        <div class="drawing fit" id="draw-baseline"></div>
+      </div>
+      <div class="sheet">
+        <div class="sheet-head"><h2>Concept · SF 1600 F</h2><span class="scale" id="ov-living"></span></div>
+        <div class="drawing fit" id="draw-overview-plan"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FLOOR PLAN (presentation) -->
+  <section class="panel" id="panel-floorplan" role="tabpanel">
+    <div class="sheet">
+      <div class="sheet-head"><h2>Floor plan</h2><span class="scale">listing style · room name and clear size</span>
+        <div class="tools"><button class="btn fit-toggle" data-target="draw-plan" aria-pressed="true">Fit</button><button class="btn print-btn">Print</button></div></div>
+      <div class="drawing fit" id="draw-plan"></div>
+    </div>
+  </section>
+
+  <!-- ===================== DRAFTED PLAN -->
+  <section class="panel" id="panel-drafted" role="tabpanel">
+    <div class="sheet">
+      <div class="sheet-head"><h2>Floor plan · drafted</h2><span class="scale">SCALE 1/4" = 1'-0" · dimensions to face of frame</span>
+        <div class="tools"><button class="btn fit-toggle" data-target="draw-arch" aria-pressed="true">Fit</button><button class="btn print-btn">Print</button></div></div>
+      <div class="drawing fit" id="draw-arch"></div>
+      <div class="sheet-note">Use “Fit” to toggle actual pixel size and scroll for the small text. Door labels are nominal sizes (3068 = 3'-0" × 6'-8"); window marks refer to the schedule under Notes.</div>
+    </div>
+  </section>
+
+  <!-- ===================== ELEVATIONS -->
+  <section class="panel" id="panel-elevations" role="tabpanel">
+    <div class="sheet"><div class="sheet-head"><h2>Front elevation</h2><span class="scale">SCALE 1/4" = 1'-0"</span><div class="tools"><button class="btn fit-toggle" data-target="draw-elev-front" aria-pressed="true">Fit</button></div></div><div class="drawing fit" id="draw-elev-front"></div></div>
+    <div class="sheet"><div class="sheet-head"><h2>Rear elevation</h2><span class="scale">SCALE 1/4" = 1'-0"</span><div class="tools"><button class="btn fit-toggle" data-target="draw-elev-rear" aria-pressed="true">Fit</button></div></div><div class="drawing fit" id="draw-elev-rear"></div></div>
+    <div class="sheet"><div class="sheet-head"><h2>Left elevation</h2><span class="scale">SCALE 1/4" = 1'-0"</span><div class="tools"><button class="btn fit-toggle" data-target="draw-elev-left" aria-pressed="true">Fit</button></div></div><div class="drawing fit" id="draw-elev-left"></div></div>
+    <div class="sheet"><div class="sheet-head"><h2>Right elevation</h2><span class="scale">SCALE 1/4" = 1'-0"</span><div class="tools"><button class="btn fit-toggle" data-target="draw-elev-right" aria-pressed="true">Fit</button></div></div><div class="drawing fit" id="draw-elev-right"></div></div>
+  </section>
+
+  <!-- ===================== ROOF PLAN -->
+  <section class="panel" id="panel-roof" role="tabpanel">
+    <div class="sheet">
+      <div class="sheet-head"><h2>Roof plan</h2><span class="scale">6:12 · 18" overhangs · ridge vents</span><div class="tools"><button class="btn fit-toggle" data-target="draw-roof" aria-pressed="true">Fit</button></div></div>
+      <div class="drawing fit" id="draw-roof"></div>
+    </div>
+  </section>
+
+  <!-- ===================== SITE PLAN -->
+  <section class="panel" id="panel-site" role="tabpanel">
+    <div class="sheet">
+      <div class="sheet-head"><h2>Site plan</h2><span class="scale">SCALE 1/8" = 1'-0" · Lot 48 · Block 23</span><div class="tools"><button class="btn fit-toggle" data-target="draw-site" aria-pressed="true">Fit</button></div></div>
+      <div class="drawing fit" id="draw-site"></div>
+      <div class="sheet-note" id="site-note"></div>
+    </div>
+  </section>
+
+  <!-- ===================== 3D -->
+  <section class="panel" id="panel-3d" role="tabpanel">
+    <div class="sheet">
+      <div class="sheet-head"><h2>Exterior model</h2><span class="scale">drag to orbit · wheel to zoom · right-drag to pan</span>
+        <div class="tools" id="model-tools">
+          <button class="btn" data-view="front-left">Front-left</button><button class="btn" data-view="front-right">Front-right</button>
+          <button class="btn" data-view="rear-right">Rear-right</button><button class="btn" data-view="rear-left">Rear-left</button><button class="btn" data-view="top">Above</button>
+        </div></div>
+      <div class="three-d" id="model-view"><div class="view-msg" id="model-msg">Loading the 3D model…</div></div>
+      <div class="sheet-note">Massing, roof, openings and materials are generated from the same plan data as the drawings: 6:12 hips and gables with 18" overhangs, 9'-1" plates (12'-1" at the porch), board-and-batten siding over a 3'-0" stone wainscot with brick rowlock, composition shingles.</div>
+    </div>
+  </section>
+
+  <!-- ===================== NOTES -->
+  <section class="panel" id="panel-notes" role="tabpanel">
+    <div class="two">
+      <div class="sheet"><div class="sheet-head"><h2>Design notes</h2></div><div class="pad prose" id="notes-prose"></div></div>
+      <div>
+        <div class="sheet"><div class="sheet-head"><h2>Door schedule</h2></div><div class="drawing fit" style="padding:0"><table class="sched" id="door-sched"></table></div></div>
+        <div class="sheet"><div class="sheet-head"><h2>Window schedule</h2></div><div class="drawing fit" style="padding:0"><table class="sched" id="win-sched"></table></div></div>
+        <div class="sheet"><div class="sheet-head"><h2>Site placement</h2></div><div class="pad prose" id="site-prose"></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script id="spec" type="application/json">{{SPEC}}</script>
+<script id="baseline" type="application/json">{{BASELINE}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>{{JS_FLOORPLAN}}</script>
+<script>{{JS_GEOMETRY}}</script>
+<script>{{JS_ELEVATIONS}}</script>
+<script>{{JS_ROOFPLAN}}</script>
+<script>{{JS_SITEPLAN}}</script>
+<script>{{JS_MODEL3D}}</script>
+<script>
+(function () {
+  'use strict';
+  var spec = JSON.parse(document.getElementById('spec').textContent);
+  var base = JSON.parse(document.getElementById('baseline').textContent);
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+  function polyArea(p) { var a = 0; for (var i = 0; i < p.length; i++) { var q = p[i], r = p[(i + 1) % p.length]; a += q[0] * r[1] - r[0] * q[1]; } return Math.abs(a) / 2 / 144; }
+  function fmtSf(n) { return Math.round(n).toLocaleString('en-US') + ' sf'; }
+  function fmt(inches) { return FloorPlan.fmtFt(inches); }
+  function bbox(poly) { var xs = poly.map(function (p) { return p[0]; }), ys = poly.map(function (p) { return p[1]; }); return { w: Math.max.apply(null, xs) - Math.min.apply(null, xs), d: Math.max.apply(null, ys) - Math.min.apply(null, ys), minX: Math.min.apply(null, xs), maxX: Math.max.apply(null, xs), minY: Math.min.apply(null, ys), maxY: Math.max.apply(null, ys) }; }
+
+  // ---- areas
+  function areas(s) {
+    var f = s.footprint; var a = { living: polyArea(f.living), garage: polyArea(f.garage), porch: polyArea(f.porch) };
+    a.total = a.living + a.garage + a.porch; return a;
+  }
+  var A = areas(spec), A0 = areas(base);
+  var ob = bbox(spec.footprint.living.concat(spec.footprint.garage)), ob0 = bbox(base.footprint.living.concat(base.footprint.garage));
+  $('#tabulation tbody').innerHTML =
+    '<tr><td>LIVING AREA</td><td>' + fmtSf(A.living) + '</td></tr>' +
+    '<tr><td>GARAGE</td><td>' + fmtSf(A.garage) + '</td></tr>' +
+    '<tr><td>COV. PORCH</td><td>' + fmtSf(A.porch) + '</td></tr>' +
+    '<tr class="total"><td>TOTAL UNDER ROOF</td><td>' + fmtSf(A.total) + '</td></tr>';
+  var beds = spec.rooms.filter(function (r) { return /bed|suite/i.test(r.name) && !/closet/i.test(r.name); }).length;
+  var baths = spec.rooms.filter(function (r) { return /bath/i.test(r.name); }).length;
+  $('#facts').innerHTML =
+    '<div class="fact"><div class="k">Program</div><div class="v">' + beds + ' bed · ' + baths + ' bath · 2-car</div></div>' +
+    '<div class="fact"><div class="k">Overall</div><div class="v">' + fmt(ob.w) + ' × ' + fmt(ob.d) + '</div></div>' +
+    '<div class="fact"><div class="k">vs. original</div><div class="v">+' + fmtSf(A.living - A0.living) + ' living</div></div>';
+  $('#ov-living').textContent = fmtSf(A.living) + ' living';
+
+  // ---- comparison table
+  var order = ['master', 'mbath', 'wic', 'utility', 'pantry', 'kitchen', 'dining', 'living', 'bed3', 'closet3', 'hall_w', 'bath2', 'closet2', 'bed2', 'garage', 'porch'];
+  var byId = function (s) { var m = {}; s.rooms.forEach(function (r) { m[r.id] = r; }); return m; };
+  var R = byId(spec), R0 = byId(base);
+  var rows = '<thead><tr><th>Room</th><th class="num">Original</th><th class="num">sf</th><th class="num">SF 1600</th><th class="num">sf</th><th class="num">Δ sf</th></tr></thead><tbody>';
+  order.forEach(function (id) {
+    var r = R[id], r0 = R0[id]; if (!r && !r0) return;
+    var d = r ? FloorPlan.roomDims(r.poly) : null, d0 = r0 ? FloorPlan.roomDims(r0.poly) : null;
+    var name = (r || r0).name; if (/^closet$/i.test(name)) name = 'Closet (' + (id === 'closet3' ? 'Bedroom-3' : 'Bedroom-2') + ')'; if (/^hall$/i.test(name)) name = 'Hall (bedroom wing)';
+    rows += '<tr><td>' + esc(name) + '</td><td class="num">' + (d0 ? d0.wFt + ' × ' + d0.dFt : '—') + '</td><td class="num">' + (d0 ? Math.round(d0.areaSf) : '—') + '</td>' +
+      '<td class="num">' + (d ? d.wFt + ' × ' + d.dFt : '—') + '</td><td class="num">' + (d ? Math.round(d.areaSf) : '—') + '</td><td class="num delta">' + ((d && d0) ? ((d.areaSf - d0.areaSf >= 0 ? '+' : '') + Math.round(d.areaSf - d0.areaSf)) : '—') + '</td></tr>';
+  });
+  rows += '<tr class="total"><td>Living area (outside of frame)</td><td class="num">' + fmt(ob0.w) + ' wide</td><td class="num">' + Math.round(A0.living) + '</td><td class="num">' + fmt(ob.w) + ' wide</td><td class="num">' + Math.round(A.living) + '</td><td class="num delta">+' + Math.round(A.living - A0.living) + '</td></tr></tbody>';
+  $('#compare').innerHTML = rows;
+
+  // ---- drawings (rendered lazily per tab)
+  var rendered = {};
+  function draw(id, fn) { if (rendered[id]) return; var el = $('#' + id); if (!el) return; el.innerHTML = fn(); rendered[id] = true; }
+  var placement = SitePlan.computePlacement(spec);
+  var renderers = {
+    'panel-overview': function () { draw('draw-baseline', function () { return FloorPlan.renderSVG(base, { style: 'presentation', pxPerInch: 1.6 }); }); draw('draw-overview-plan', function () { return FloorPlan.renderSVG(spec, { style: 'presentation', pxPerInch: 1.6 }); }); mountHero(); },
+    'panel-floorplan': function () { draw('draw-plan', function () { return FloorPlan.renderSVG(spec, { style: 'presentation', pxPerInch: 2 }); }); },
+    'panel-drafted': function () { draw('draw-arch', function () { return FloorPlan.renderSVG(spec, { style: 'architectural', pxPerInch: 2 }); }); },
+    'panel-elevations': function () { ['front', 'rear', 'left', 'right'].forEach(function (s) { draw('draw-elev-' + s, function () { return Elevations.renderSVG(spec, s, { pxPerFoot: 24 }); }); }); },
+    'panel-roof': function () { draw('draw-roof', function () { return RoofPlan.renderSVG(spec, { pxPerInch: 2 }); }); },
+    'panel-site': function () { draw('draw-site', function () { return SitePlan.renderSVG(spec, { pxPerFoot: 10, placement: placement }); }); $('#site-note').textContent = placement.notes.join(' '); },
+    'panel-3d': function () { mountModel(); },
+    'panel-notes': function () { notes(); }
+  };
+
+  // ---- tabs
+  var TABS = [['panel-overview', 'Overview'], ['panel-floorplan', 'Floor plan'], ['panel-drafted', 'Drafted plan'], ['panel-elevations', 'Elevations'], ['panel-roof', 'Roof plan'], ['panel-site', 'Site plan'], ['panel-3d', '3D model'], ['panel-notes', 'Notes']];
+  var nav = $('#tabs');
+  TABS.forEach(function (t) { var b = document.createElement('button'); b.className = 'tab'; b.setAttribute('role', 'tab'); b.dataset.panel = t[0]; b.textContent = t[1]; b.setAttribute('aria-selected', t[0] === 'panel-overview'); nav.appendChild(b); });
+  function show(id) {
+    document.querySelectorAll('section.panel').forEach(function (p) { p.classList.toggle('active', p.id === id); });
+    nav.querySelectorAll('.tab').forEach(function (b) { b.setAttribute('aria-selected', b.dataset.panel === id); });
+    try { renderers[id](); } catch (e) { console.error(e); }
+    if (id === 'panel-3d' && model) model.resize();
+    if (id === 'panel-overview' && hero) hero.resize();
+    try { history.replaceState(null, '', '#' + id.replace('panel-', '')); } catch (e) { }
+  }
+  nav.addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (b) show(b.dataset.panel); });
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('.fit-toggle'); if (t) { var d = $('#' + t.dataset.target); var fit = d.classList.contains('fit'); d.classList.toggle('fit', !fit); d.classList.toggle('full', fit); t.setAttribute('aria-pressed', String(!fit)); t.textContent = fit ? 'Actual size' : 'Fit'; }
+    var p = e.target.closest('.print-btn'); if (p) window.print();
+    var v = e.target.closest('[data-view]'); if (v) { var h = v.closest('#hero-tools') ? hero : model; if (h) h.setView(v.dataset.view); }
+  });
+
+  // ---- 3D
+  var hero = null, model = null;
+  function canWebGL() { try { var c = document.createElement('canvas'); return !!(window.THREE && window.THREE.OrbitControls && (c.getContext('webgl2') || c.getContext('webgl'))); } catch (e) { return false; } }
+  function mountHero() {
+    if (hero) return; var box = $('#hero-view'), msg = $('#hero-msg');
+    if (!canWebGL()) { msg.textContent = 'The interactive model needs WebGL and the Three.js library from the CDN; the drawings on the other tabs do not.'; return; }
+    try { hero = Model3D.mount(box, spec, { view: 'front-left' }); msg.hidden = true; $('#hero-tools').hidden = false; } catch (e) { msg.textContent = 'Could not start the 3D view: ' + e.message; }
+  }
+  function mountModel() {
+    if (model) return; var box = $('#model-view'), msg = $('#model-msg');
+    if (!canWebGL()) { msg.textContent = 'The interactive model needs WebGL and the Three.js library from the CDN.'; return; }
+    try { model = Model3D.mount(box, spec, { view: 'front-right' }); msg.hidden = true; } catch (e) { msg.textContent = 'Could not start the 3D view: ' + e.message; }
+  }
+
+  // ---- notes & schedules
+  function notes() {
+    if (notes.done) return; notes.done = true;
+    var imp = SitePlan.impervious(spec, placement);
+    var p = '<p>' + esc(spec.description || '') + '</p>' +
+      '<h3>Where the extra area went</h3><ul>' +
+      '<li>Great room band (kitchen · dining · living) deepened from 12\'-8" to 14\'-6" and widened to about 38\'-10" — the largest single gain.</li>' +
+      '<li>Primary suite to 15\'-6" × 13\'-6"; bath with a 48" × 60" tile shower, 64" double vanity, toilet room and linen; W.I.C. 10\'-10" × 5\'-6" with rods on both long walls.</li>' +
+      '<li>Bedrooms 2 and 3 to 12\'-8" wide with 60" pair closet doors; Bath 2 gains a 60" vanity.</li>' +
+      '<li>Walk-in pantry 5\'-8" square; utility 6\'-8" × 9\'-10" with a counter beside the washer and dryer on the 2×6 plumbing wall.</li>' +
+      '<li>Garage widened to 21\'-0" frame so the 16\' door reads in proportion under the wider front; porch 9\'-4" × 6\'-8" with the same two 24" stone columns.</li></ul>' +
+      '<h3>Conventions</h3><ul>' +
+      '<li>Living area = area of the conditioned footprint to the outside face of frame, garage and porch excluded — the same line the SF 1258 F sheet tabulates. This model reads the original at 1,245 sf against the sheet\'s 1,258 sf (the difference is the veneer ledge).</li>' +
+      '<li>Exterior walls drawn 6", interior 4", plumbing walls 6"; all wall positions on 2" increments.</li>' +
+      '<li>Roof: 6:12 main hip, front gable over the garage, gable over the porch, hip over the bedroom wing; 18" overhangs; 9\'-1" plates, 12\'-1" porch plate; ridge 16\'-7" above slab.</li>' +
+      '<li>Window and door marks reuse the original schedule (A = PR 3050 SH, B = 3030 SH, C = PR 2050 SH, D = 3010 HS, E = 1060 fixed sidelights; 3068 entry, PR 2668 french doors, 16×8 overhead door).</li></ul>' +
+      '<div class="callout"><strong>Concept study — not for construction.</strong> Derived from Plan Factory plan SF 1258 “F” (designer Antonio Escobedo, 2023) for Dantega Homes / Daniel Orhiunu. Permit drawings for a 1,600 sf version must come from the plan\'s designer or another licensed designer/engineer, who will also confirm structure, energy code and the 2021 IRC items the original sheets carry.</div>';
+    $('#notes-prose').innerHTML = p;
+    // schedules from the spec
+    var doors = spec.doors.slice().sort(function (a, b) { return String(a.id).localeCompare(String(b.id), undefined, { numeric: true }); });
+    var dh = '<thead><tr><th>Mark</th><th>Size</th><th>Type</th><th>Remarks</th></tr></thead><tbody>';
+    doors.forEach(function (d) { dh += '<tr><td>' + esc(d.id) + '</td><td>' + esc((d.label || '').split(' ')[0]) + '</td><td>' + esc(d.kind) + '</td><td>' + esc(d.label || '') + '</td></tr>'; });
+    $('#door-sched').innerHTML = dh + '</tbody>';
+    var marks = {}; spec.windows.forEach(function (w) { var k = w.mark + '|' + w.label; marks[k] = marks[k] || { mark: w.mark, label: w.label, w: w.w, n: 0 }; marks[k].n++; });
+    var wh = '<thead><tr><th>Mark</th><th>Unit</th><th>Qty</th><th>Rough width</th></tr></thead><tbody>';
+    Object.keys(marks).sort().forEach(function (k) { var m = marks[k]; wh += '<tr><td>' + esc(m.mark) + '</td><td>' + esc(m.label) + '</td><td>' + m.n + '</td><td>' + fmt(m.w) + '</td></tr>'; });
+    $('#win-sched').innerHTML = wh + '</tbody>';
+    var c = placement.clearances;
+    $('#site-prose').innerHTML = '<p>On Lot 48 the wider house is placed <span class="mono">' + fmt(placement.origin[0] * 12) + '</span> off the left property line with its rear wall <span class="mono">' + fmt(placement.origin[1] * 12) + '</span> from the Hunt Lane line (the original sat 10\'-7" and 39\'-9½").</p>' +
+      '<ul><li>Clearances: left ' + fmt(c.left * 12) + ' · right ' + fmt(c.right * 12) + ' (at the wing\'s front corner, where the right line angles in) · rear ' + fmt(c.rear * 12) + ' · front ' + fmt(c.front * 12) + ' — setbacks are 5\' / 5\' / 5\' / 20\'.</li>' +
+      '<li>Impervious cover: house ' + fmtSf(imp.house) + ' + flatwork ' + fmtSf(imp.flatwork) + ' = ' + fmtSf(imp.total) + ' of a ' + fmtSf(imp.lot) + ' lot (' + Math.round(imp.pct) + '%). The original sheet showed 32%.</li>' +
+      (placement.ok ? '' : '<li><strong>The house does not clear a setback at this placement — see the site plan.</strong></li>') + '</ul>';
+  }
+
+  // ---- start
+  var start = (location.hash || '').replace('#', '');
+  var startId = TABS.some(function (t) { return t[0] === 'panel-' + start; }) ? 'panel-' + start : 'panel-overview';
+  show(startId);
+})();
+</script>

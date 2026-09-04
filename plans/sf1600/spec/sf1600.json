@@ -1,0 +1,752 @@
+{
+ "name": "SF 1600 F",
+ "plan_no": "SF 1600",
+ "description": "Concept study: the Plan Factory SF 1258 'F' plan grown to 1,600 sf of living area for Dantega Homes / Daniel Orhiunu. The original diagram is kept intact (primary suite rear-left with bath, W.I.C. and utility in front of it; open kitchen-dining-living in the center with the walk-in pantry against the suite wall; two bedrooms and Bath 2 in the right wing with Bedroom-2 projecting toward the street; front-gabled two-car garage with the recessed covered porch beside it). The main body grows from 44'-10\" x 26'-4\" to 50'-8\" x 30'-0\" with every wall snapped to 2\" framing increments, so each room grows roughly in proportion: the great room band deepens to 14'-6\", the primary bedroom becomes 15'-6\" x 13'-6\", secondary bedrooms 12'-8\" wide, the pantry a true 5'-8\" walk-in and the utility a 6'-8\" x 9'-10\" laundry/mud room. Not for construction.",
+ "based_on": "Plan Factory SF 1258 F (designer Antonio Escobedo), sheets 1-2 of 4, plot date 10/10/2023, 738 Sawtooth Dr.",
+ "target": {
+  "living_sf": 1600,
+  "tolerance_sf": 10
+ },
+ "walls": {
+  "exterior": 6,
+  "interior": 4,
+  "plumbing": 6
+ },
+ "footprint": {
+  "living": [[0, 0], [608, 0], [608, 432], [444, 432], [444, 360], [0, 360]],
+  "garage": [[0, 360], [252, 360], [252, 628], [0, 628]],
+  "porch": [[252, 360], [364, 360], [364, 440], [252, 440]],
+  "stoop": [[362, -72], [446, -72], [446, 0], [362, 0]]
+ },
+ "porch_columns": [
+  {
+   "x": 252,
+   "y": 416,
+   "size": 24
+  },
+  {
+   "x": 340,
+   "y": 416,
+   "size": 24
+  }
+ ],
+ "rooms": [
+  {
+   "id": "master",
+   "name": "Mstr. Suite",
+   "zone": "living",
+   "poly": [[6, 6], [192, 6], [192, 168], [6, 168]],
+   "floor": "tile",
+   "ceiling": "SLOPE CLG 4:12"
+  },
+  {
+   "id": "shower",
+   "name": "Shower",
+   "zone": "living",
+   "poly": [[6, 172], [54, 172], [54, 232], [6, 232]],
+   "floor": "tile",
+   "ceiling": "9' CLG",
+   "label": false
+  },
+  {
+   "id": "mbath",
+   "name": "Mstr. Bath",
+   "zone": "living",
+   "poly": [[58, 172], [138, 172], [138, 240], [102, 240], [102, 284], [6, 284], [6, 236], [58, 236]],
+   "floor": "tile",
+   "ceiling": "9' CLG"
+  },
+  {
+   "id": "linen",
+   "name": "Linen",
+   "zone": "living",
+   "poly": [[106, 244], [138, 244], [138, 284], [106, 284]],
+   "floor": "tile",
+   "ceiling": "9' CLG",
+   "label": false
+  },
+  {
+   "id": "hall_m",
+   "name": "Hall",
+   "zone": "living",
+   "poly": [[142, 172], [192, 172], [192, 184], [222, 184], [222, 232], [142, 232]],
+   "floor": "tile",
+   "ceiling": "9' CLG",
+   "label": false
+  },
+  {
+   "id": "wic",
+   "name": "W.I.C.",
+   "zone": "living",
+   "poly": [[6, 288], [136, 288], [136, 354], [6, 354]],
+   "floor": "carpet",
+   "ceiling": "9' CLG"
+  },
+  {
+   "id": "utility",
+   "name": "Utility",
+   "zone": "living",
+   "poly": [[142, 236], [222, 236], [222, 354], [142, 354]],
+   "floor": "tile",
+   "ceiling": "9' CLG"
+  },
+  {
+   "id": "pantry",
+   "name": "Pantry",
+   "zone": "living",
+   "poly": [[196, 6], [264, 6], [264, 74], [196, 74]],
+   "floor": "tile",
+   "ceiling": "9' CLG"
+  },
+  {
+   "id": "kitchen",
+   "name": "Kitchen",
+   "zone": "living",
+   "poly": [[268, 6], [350, 6], [350, 180], [196, 180], [196, 78], [268, 78]],
+   "floor": "tile",
+   "ceiling": "SLOPE CLG 3:12"
+  },
+  {
+   "id": "dining",
+   "name": "Dining",
+   "zone": "living",
+   "poly": [[350, 6], [446, 6], [446, 180], [350, 180]],
+   "floor": "tile",
+   "ceiling": "SLOPE CLG 3:12"
+  },
+  {
+   "id": "living",
+   "name": "Living",
+   "zone": "living",
+   "poly": [[226, 180], [446, 180], [446, 354], [226, 354]],
+   "floor": "tile",
+   "ceiling": "SLOPE CLG 3:12"
+  },
+  {
+   "id": "bed3",
+   "name": "Bedroom-3",
+   "zone": "living",
+   "poly": [[450, 6], [602, 6], [602, 138], [450, 138]],
+   "floor": "tile",
+   "ceiling": "9' CLG"
+  },
+  {
+   "id": "closet3",
+   "name": "Closet",
+   "zone": "living",
+   "poly": [[498, 142], [602, 142], [602, 168], [498, 168]],
+   "floor": "tile",
+   "ceiling": "9' CLG",
+   "label": false
+  },
+  {
+   "id": "hall_w",
+   "name": "Hall",
+   "zone": "living",
+   "poly": [[450, 142], [494, 142], [494, 280], [450, 280]],
+   "floor": "tile",
+   "ceiling": "9' CLG",
+   "label": false
+  },
+  {
+   "id": "bath2",
+   "name": "Bath 2",
+   "zone": "living",
+   "poly": [[498, 172], [602, 172], [602, 246], [532, 246], [532, 280], [498, 280]],
+   "floor": "tile",
+   "ceiling": "9' CLG"
+  },
+  {
+   "id": "closet2",
+   "name": "Closet",
+   "zone": "living",
+   "poly": [[536, 250], [602, 250], [602, 280], [536, 280]],
+   "floor": "tile",
+   "ceiling": "9' CLG",
+   "label": false
+  },
+  {
+   "id": "bed2",
+   "name": "Bedroom-2",
+   "zone": "living",
+   "poly": [[450, 284], [602, 284], [602, 426], [450, 426]],
+   "floor": "tile",
+   "ceiling": "9' CLG"
+  },
+  {
+   "id": "garage",
+   "name": "2 Car Garage",
+   "zone": "garage",
+   "poly": [[6, 360], [246, 360], [246, 622], [6, 622]],
+   "floor": "concrete",
+   "ceiling": "9' CLG"
+  },
+  {
+   "id": "porch",
+   "name": "Cov. Porch",
+   "zone": "porch",
+   "poly": [[252, 360], [364, 360], [364, 440], [252, 440]],
+   "floor": "concrete",
+   "ceiling": "12' CLG"
+  }
+ ],
+ "doors": [
+  {
+   "id": "1",
+   "kind": "overhead",
+   "w": 192,
+   "x": 126,
+   "y": 628,
+   "orient": "h",
+   "label": "16'x8' O.H. garage door"
+  },
+  {
+   "id": "2",
+   "kind": "hinged",
+   "w": 36,
+   "x": 308,
+   "y": 360,
+   "orient": "h",
+   "hinge": "right",
+   "swing": "-",
+   "label": "3068 front entry w/ 2-1060 fixed sidelights"
+  },
+  {
+   "id": "3",
+   "kind": "hinged",
+   "w": 36,
+   "x": 200,
+   "y": 357,
+   "orient": "h",
+   "hinge": "right",
+   "swing": "-",
+   "label": "3068 1-3/8 S.C. w/ closer (garage)"
+  },
+  {
+   "id": "4",
+   "kind": "french",
+   "w": 60,
+   "x": 404,
+   "y": 0,
+   "orient": "h",
+   "hinge": "left",
+   "swing": "+",
+   "label": "PR 2668 15-lite french doors"
+  },
+  {
+   "id": "5a",
+   "kind": "hinged",
+   "w": 36,
+   "x": 164,
+   "y": 170,
+   "orient": "h",
+   "hinge": "right",
+   "swing": "-",
+   "label": "3068 master bedroom"
+  },
+  {
+   "id": "5b",
+   "kind": "hinged",
+   "w": 36,
+   "x": 82,
+   "y": 170,
+   "orient": "h",
+   "hinge": "left",
+   "swing": "-",
+   "label": "3068 master bath"
+  },
+  {
+   "id": "5c",
+   "kind": "hinged",
+   "w": 36,
+   "x": 200,
+   "y": 234,
+   "orient": "h",
+   "hinge": "right",
+   "swing": "+",
+   "label": "3068 utility"
+  },
+  {
+   "id": "6",
+   "kind": "hinged",
+   "w": 30,
+   "x": 266,
+   "y": 48,
+   "orient": "v",
+   "hinge": "right",
+   "swing": "+",
+   "label": "2668 pantry"
+  },
+  {
+   "id": "7a",
+   "kind": "hinged",
+   "w": 32,
+   "x": 60,
+   "y": 286,
+   "orient": "h",
+   "hinge": "left",
+   "swing": "+",
+   "label": "2868 W.I.C."
+  },
+  {
+   "id": "7b",
+   "kind": "hinged",
+   "w": 32,
+   "x": 472,
+   "y": 140,
+   "orient": "h",
+   "hinge": "left",
+   "swing": "-",
+   "label": "2868 bedroom-3"
+  },
+  {
+   "id": "7c",
+   "kind": "hinged",
+   "w": 32,
+   "x": 496,
+   "y": 210,
+   "orient": "v",
+   "hinge": "right",
+   "swing": "+",
+   "label": "2868 bath 2"
+  },
+  {
+   "id": "7d",
+   "kind": "hinged",
+   "w": 32,
+   "x": 472,
+   "y": 282,
+   "orient": "h",
+   "hinge": "left",
+   "swing": "+",
+   "label": "2868 bedroom-2"
+  },
+  {
+   "id": "7e",
+   "kind": "double",
+   "w": 60,
+   "x": 569,
+   "y": 282,
+   "orient": "h",
+   "hinge": "left",
+   "swing": "+",
+   "label": "PR 2668 closet"
+  },
+  {
+   "id": "8",
+   "kind": "double",
+   "w": 60,
+   "x": 550,
+   "y": 140,
+   "orient": "h",
+   "hinge": "left",
+   "swing": "-",
+   "label": "PR 2668 closet"
+  },
+  {
+   "id": "9",
+   "kind": "opening",
+   "w": 36,
+   "x": 224,
+   "y": 205,
+   "orient": "v",
+   "label": "3010 cased opening"
+  },
+  {
+   "id": "10",
+   "kind": "bifold",
+   "w": 24,
+   "x": 122,
+   "y": 242,
+   "orient": "h",
+   "hinge": "left",
+   "swing": "-",
+   "label": "2068 bifold linen & hamper"
+  },
+  {
+   "id": "9b",
+   "kind": "opening",
+   "w": 36,
+   "x": 448,
+   "y": 210,
+   "orient": "v",
+   "label": "3010 cased opening"
+  },
+  {
+   "id": "11",
+   "kind": "hinged",
+   "w": 32,
+   "x": 56,
+   "y": 200,
+   "orient": "v",
+   "hinge": "left",
+   "swing": "+",
+   "label": "32 in. glass shower door"
+  }
+ ],
+ "windows": [
+  {
+   "mark": "A",
+   "label": "PR 3050 SH",
+   "w": 72,
+   "x": 99,
+   "y": 0,
+   "orient": "h",
+   "head": 80
+  },
+  {
+   "mark": "A",
+   "label": "PR 3050 SH",
+   "w": 72,
+   "x": 526,
+   "y": 0,
+   "orient": "h",
+   "head": 80
+  },
+  {
+   "mark": "A",
+   "label": "PR 3050 SH",
+   "w": 72,
+   "x": 526,
+   "y": 432,
+   "orient": "h",
+   "head": 80
+  },
+  {
+   "mark": "B",
+   "label": "3030 SH safety glz",
+   "w": 36,
+   "x": 315,
+   "y": 0,
+   "orient": "h",
+   "head": 80
+  },
+  {
+   "mark": "C",
+   "label": "PR 2050 SH",
+   "w": 48,
+   "x": 404,
+   "y": 360,
+   "orient": "h",
+   "head": 80
+  },
+  {
+   "mark": "D",
+   "label": "3010 HS",
+   "w": 36,
+   "x": 0,
+   "y": 202,
+   "orient": "v",
+   "head": 84
+  },
+  {
+   "mark": "D",
+   "label": "3010 HS",
+   "w": 36,
+   "x": 608,
+   "y": 204,
+   "orient": "v",
+   "head": 84
+  },
+  {
+   "mark": "E",
+   "label": "1060 fixed sidelight",
+   "w": 12,
+   "x": 278,
+   "y": 360,
+   "orient": "h",
+   "head": 80
+  },
+  {
+   "mark": "E",
+   "label": "1060 fixed sidelight",
+   "w": 12,
+   "x": 338,
+   "y": 360,
+   "orient": "h",
+   "head": 80
+  }
+ ],
+ "fixtures": [
+  {
+   "kind": "shower",
+   "x": 6,
+   "y": 172,
+   "w": 48,
+   "h": 60
+  },
+  {
+   "kind": "toilet",
+   "x": 8,
+   "y": 250,
+   "w": 28,
+   "h": 20,
+   "rot": 270
+  },
+  {
+   "kind": "vanity",
+   "x": 116,
+   "y": 174,
+   "w": 22,
+   "h": 64,
+   "rot": 90,
+   "sinks": 2
+  },
+  {
+   "kind": "shelves",
+   "x": 106,
+   "y": 246,
+   "w": 32,
+   "h": 12
+  },
+  {
+   "kind": "counter",
+   "x": 196,
+   "y": 78,
+   "w": 24,
+   "h": 102
+  },
+  {
+   "kind": "range",
+   "x": 196,
+   "y": 84,
+   "w": 24,
+   "h": 30,
+   "rot": 270
+  },
+  {
+   "kind": "fridge",
+   "x": 196,
+   "y": 144,
+   "w": 24,
+   "h": 36,
+   "rot": 270
+  },
+  {
+   "kind": "counter",
+   "x": 268,
+   "y": 6,
+   "w": 82,
+   "h": 24
+  },
+  {
+   "kind": "dw",
+   "x": 272,
+   "y": 6,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "kind": "sink",
+   "x": 300,
+   "y": 6,
+   "w": 30,
+   "h": 22
+  },
+  {
+   "kind": "counter",
+   "x": 350,
+   "y": 6,
+   "w": 20,
+   "h": 24
+  },
+  {
+   "kind": "island",
+   "x": 262,
+   "y": 82,
+   "w": 42,
+   "h": 84
+  },
+  {
+   "kind": "shelves",
+   "x": 196,
+   "y": 6,
+   "w": 68,
+   "h": 12
+  },
+  {
+   "kind": "shelves",
+   "x": 196,
+   "y": 18,
+   "w": 12,
+   "h": 56
+  },
+  {
+   "kind": "washer",
+   "x": 142,
+   "y": 242,
+   "w": 30,
+   "h": 30,
+   "rot": 270
+  },
+  {
+   "kind": "dryer",
+   "x": 142,
+   "y": 276,
+   "w": 30,
+   "h": 30,
+   "rot": 270
+  },
+  {
+   "kind": "counter",
+   "x": 142,
+   "y": 312,
+   "w": 30,
+   "h": 42
+  },
+  {
+   "kind": "water_heater",
+   "x": 12,
+   "y": 372,
+   "w": 24,
+   "h": 24
+  },
+  {
+   "kind": "vanity",
+   "x": 500,
+   "y": 172,
+   "w": 60,
+   "h": 22,
+   "sinks": 1
+  },
+  {
+   "kind": "toilet",
+   "x": 505,
+   "y": 250,
+   "w": 20,
+   "h": 28
+  },
+  {
+   "kind": "tub",
+   "x": 570,
+   "y": 174,
+   "w": 32,
+   "h": 60,
+   "rot": 90
+  },
+  {
+   "kind": "closet_rod",
+   "x": 498,
+   "y": 146,
+   "w": 104,
+   "h": 2
+  },
+  {
+   "kind": "closet_rod",
+   "x": 536,
+   "y": 254,
+   "w": 66,
+   "h": 2
+  },
+  {
+   "kind": "closet_rod",
+   "x": 6,
+   "y": 292,
+   "w": 130,
+   "h": 2
+  },
+  {
+   "kind": "closet_rod",
+   "x": 6,
+   "y": 348,
+   "w": 130,
+   "h": 2
+  }
+ ],
+ "notes": [
+  {
+   "text": "W.H. on 18\" platform in garage",
+   "x": 40,
+   "y": 372
+  },
+  {
+   "text": "6x10 beams at ceiling breaks",
+   "x": 336,
+   "y": 190
+  }
+ ],
+ "roof": {
+  "pitch": 6,
+  "overhang": 18,
+  "plate": 109,
+  "porch_plate": 145,
+  "pieces": [
+   {
+    "id": "main",
+    "kind": "hip",
+    "rect": [0, 0, 608, 360],
+    "ridge": "x"
+   },
+   {
+    "id": "wing",
+    "kind": "hip",
+    "rect": [444, 262, 608, 432],
+    "ridge": "y"
+   },
+   {
+    "id": "garage",
+    "kind": "gable",
+    "rect": [0, 360, 252, 628],
+    "ridge": "y",
+    "gable_ends": ["front"]
+   },
+   {
+    "id": "porch",
+    "kind": "gable",
+    "rect": [252, 342, 364, 440],
+    "ridge": "y",
+    "gable_ends": ["front"]
+   }
+  ]
+ },
+ "elevations": {
+  "siding": "Board & batten siding as selected",
+  "wainscot": "Rock/stone veneer as specified with brick rowlock cap",
+  "wainscot_height": 36,
+  "roofing": "Composition roof shingles, 6:12 pitch, ridge vents",
+  "trim": "4\" trim",
+  "garage_door": "16'x8' overhead sectional, veneered per selection",
+  "front_door": "3068 special front entry with 2-1060 fixed sidelights, safety glazing",
+  "porch_ceiling": "12'-0\" porch ceiling; 9'-1\" plates elsewhere",
+  "header_height": 80
+ },
+ "site": {
+  "units": "ft",
+  "address": "738 Sawtooth Dr., Lot 48 Block 23 NCB 15850, Lackland City Subdivision, San Antonio, Bexar County TX",
+  "lot_sf": 7282,
+  "lot_note": "Irregular lot: 73.31' front (Hunt Lane side), 109.97' left P.L., 113.77' right P.L., 18.69' + curve R=300.41' L=39.50' at Sawtooth Dr.",
+  "setbacks": {
+   "front": 20,
+   "side": 5,
+   "rear": 5
+  },
+  "original_impervious": {
+   "house": 1774,
+   "flatwork": 540,
+   "total": 2314,
+   "pct": 32
+  },
+  "y_axis": "+y toward Sawtooth Dr. (street/front); Hunt Lane along the top (y=0)",
+  "lot": [[0.0, 0.0], [73.31, 0.0], [58.09, 112.75], [0.0, 109.97]],
+  "lot_labels": {
+   "top": "HUNT LANE  73.31' P.L.",
+   "left": "109.97' P.L.",
+   "right": "113.77' P.L.",
+   "bottom": "SAWTOOTH DR.  18.69' + curve R=300.41' L=39.50'"
+  },
+  "bottom_curve": {
+   "straight_from_left": 18.69,
+   "radius": 300.41,
+   "length": 39.5
+  },
+  "setback_note": "5' B.S.L. along Hunt Lane, both sides; 20' B.S.L. at Sawtooth Dr.",
+  "house_origin_original": [10.583, 39.79],
+  "house_origin_note": "Same siting as the original: rear-left frame corner 10'-7\" off the left P.L. and 39'-9 1/2\" from the Hunt Lane P.L.; 50'-8\" overall width leaves > 5' side setbacks on the 73.31' lot.",
+  "right_pl_x_at_y": "x = 73.31 + (58.11-73.31)*(y/112.75)",
+  "driveway": "concrete drive from the garage door straight to Sawtooth Dr., 42\" walk from the porch to the drive",
+  "existing": {
+   "sidewalk": "existing sidewalk along Sawtooth Dr."
+  }
+ },
+ "variant_history": "Derived from candidate A (proportional growth); candidates B/C were not completed."
+}

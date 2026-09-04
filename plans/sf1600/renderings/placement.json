@@ -1,0 +1,355 @@
+{
+ "placement": {
+  "origin": [
+   7.772,
+   36.79
+  ],
+  "clearances": {
+   "left": 7.772,
+   "right": 5,
+   "rear": 36.79,
+   "front": 20.871
+  },
+  "ok": true,
+  "notes": [
+   "House shifted 3'-0\" toward Hunt Lane (rear wall 36'-9½\" from the Hunt Lane P.L., originally 39'-9½\") so the side and front setbacks clear.",
+   "House shifted 2'-9½\" to the left (7'-9½\" off the left P.L., originally 10'-7\") so the living front-right corner clears the 5' side B.S.L. along the slanted right P.L.",
+   "Clearances to the property lines — left 7'-9½\" at the living rear-left corner; right 5'-0\" at the living front-right corner; rear 36'-9½\" at the living rear-left corner; front 20'-10½\" at the garage front-left corner.",
+   "All setbacks satisfied (5' sides, 5' rear, 20' front)."
+  ],
+  "violations": [],
+  "corners": [
+   {
+    "zone": "living",
+    "index": 0,
+    "name": "living rear-left corner",
+    "plan": [
+     0,
+     0
+    ],
+    "point": [
+     7.7721409573249405,
+     36.79
+    ],
+    "left": 7.7721409573249405,
+    "right": 60.02717808645605,
+    "rear": 36.79,
+    "front": 73.20449265606925
+   },
+   {
+    "zone": "living",
+    "index": 1,
+    "name": "living rear-right corner",
+    "plan": [
+     50.666666666666664,
+     0
+    ],
+    "point": [
+     58.43880762399161,
+     36.79
+    ],
+    "left": 58.43880762399161,
+    "right": 9.815921098522882,
+    "rear": 36.79,
+    "front": 75.44873628296617
+   },
+   {
+    "zone": "living",
+    "index": 2,
+    "name": "living front-right corner",
+    "plan": [
+     50.666666666666664,
+     36
+    ],
+    "point": [
+     58.43880762399161,
+     72.78999999999999
+    ],
+    "left": 58.43880762399161,
+    "right": 5.000000000000006,
+    "rear": 72.78999999999999,
+    "front": 39.682916704311204
+   },
+   {
+    "zone": "living",
+    "index": 3,
+    "name": "living front-mid corner",
+    "plan": [
+     37,
+     36
+    ],
+    "point": [
+     44.77214095732494,
+     72.78999999999999
+    ],
+    "left": 44.77214095732494,
+    "right": 18.54382589806092,
+    "rear": 72.78999999999999,
+    "front": 38.318641163716244
+   },
+   {
+    "zone": "living",
+    "index": 4,
+    "name": "living mid-mid corner",
+    "plan": [
+     37,
+     30
+    ],
+    "point": [
+     44.77214095732494,
+     66.78999999999999
+    ],
+    "left": 44.77214095732494,
+    "right": 19.3464794144814,
+    "rear": 66.78999999999999,
+    "front": 44.300666821068944
+   },
+   {
+    "zone": "living",
+    "index": 5,
+    "name": "living mid-left corner",
+    "plan": [
+     0,
+     30
+    ],
+    "point": [
+     7.7721409573249405,
+     66.78999999999999
+    ],
+    "left": 7.7721409573249405,
+    "right": 56.01391050435366,
+    "rear": 66.78999999999999,
+    "front": 43.20464621173288
+   },
+   {
+    "zone": "garage",
+    "index": 0,
+    "name": "garage rear-left corner",
+    "plan": [
+     0,
+     30
+    ],
+    "point": [
+     7.7721409573249405,
+     66.78999999999999
+    ],
+    "left": 7.7721409573249405,
+    "right": 56.01391050435366,
+    "rear": 66.78999999999999,
+    "front": 43.20464621173288
+   },
+   {
+    "zone": "garage",
+    "index": 1,
+    "name": "garage rear-right corner",
+    "plan": [
+     21,
+     30
+    ],
+    "point": [
+     28.77214095732494,
+     66.78999999999999
+    ],
+    "left": 28.772140957324943,
+    "right": 35.20266583172346,
+    "rear": 66.78999999999999,
+    "front": 43.41626839599573
+   },
+   {
+    "zone": "garage",
+    "index": 2,
+    "name": "garage front-right corner",
+    "plan": [
+     21,
+     52.333333333333336
+    ],
+    "point": [
+     28.77214095732494,
+     89.12333333333333
+    ],
+    "left": 28.772140957324943,
+    "right": 32.21501107615834,
+    "rear": 89.12333333333333,
+    "front": 21.095340306276224
+   },
+   {
+    "zone": "garage",
+    "index": 3,
+    "name": "garage front-left corner",
+    "plan": [
+     0,
+     52.333333333333336
+    ],
+    "point": [
+     7.7721409573249405,
+     89.12333333333333
+    ],
+    "left": 7.7721409573249405,
+    "right": 53.026255748788536,
+    "rear": 89.12333333333333,
+    "front": 20.87142719206022
+   },
+   {
+    "zone": "porch",
+    "index": 0,
+    "name": "porch rear-left corner",
+    "plan": [
+     21,
+     30
+    ],
+    "point": [
+     28.77214095732494,
+     66.78999999999999
+    ],
+    "left": 28.772140957324943,
+    "right": 35.20266583172346,
+    "rear": 66.78999999999999,
+    "front": 43.41626839599573
+   },
+   {
+    "zone": "porch",
+    "index": 1,
+    "name": "porch rear-right corner",
+    "plan": [
+     30.333333333333332,
+     30
+    ],
+    "point": [
+     38.10547429065827,
+     66.78999999999999
+    ],
+    "left": 38.105474290658265,
+    "right": 25.95322375499893,
+    "rear": 66.78999999999999,
+    "front": 43.841991373242905
+   },
+   {
+    "zone": "porch",
+    "index": 2,
+    "name": "porch front-right corner",
+    "plan": [
+     30.333333333333332,
+     36.666666666666664
+    ],
+    "point": [
+     38.10547429065827,
+     73.45666666666666
+    ],
+    "left": 38.105474290658265,
+    "right": 25.06138651453173,
+    "rear": 73.45666666666666,
+    "front": 37.187612717512124
+   },
+   {
+    "zone": "porch",
+    "index": 3,
+    "name": "porch front-left corner",
+    "plan": [
+     21,
+     36.666666666666664
+    ],
+    "point": [
+     28.77214095732494,
+     73.45666666666666
+    ],
+    "left": 28.772140957324943,
+    "right": 34.31082859125626,
+    "rear": 73.45666666666666,
+    "front": 36.75330478712424
+   }
+  ],
+  "required": {
+   "left": 5,
+   "right": 5,
+   "rear": 5,
+   "front": 20
+  },
+  "worst": {
+   "left": {
+    "zone": "living",
+    "index": 0,
+    "name": "living rear-left corner",
+    "plan": [
+     0,
+     0
+    ],
+    "point": [
+     7.7721409573249405,
+     36.79
+    ],
+    "left": 7.7721409573249405,
+    "right": 60.02717808645605,
+    "rear": 36.79,
+    "front": 73.20449265606925
+   },
+   "right": {
+    "zone": "living",
+    "index": 2,
+    "name": "living front-right corner",
+    "plan": [
+     50.666666666666664,
+     36
+    ],
+    "point": [
+     58.43880762399161,
+     72.78999999999999
+    ],
+    "left": 58.43880762399161,
+    "right": 5.000000000000006,
+    "rear": 72.78999999999999,
+    "front": 39.682916704311204
+   },
+   "rear": {
+    "zone": "living",
+    "index": 0,
+    "name": "living rear-left corner",
+    "plan": [
+     0,
+     0
+    ],
+    "point": [
+     7.7721409573249405,
+     36.79
+    ],
+    "left": 7.7721409573249405,
+    "right": 60.02717808645605,
+    "rear": 36.79,
+    "front": 73.20449265606925
+   },
+   "front": {
+    "zone": "garage",
+    "index": 3,
+    "name": "garage front-left corner",
+    "plan": [
+     0,
+     52.333333333333336
+    ],
+    "point": [
+     7.7721409573249405,
+     89.12333333333333
+    ],
+    "left": 7.7721409573249405,
+    "right": 53.026255748788536,
+    "rear": 89.12333333333333,
+    "front": 20.87142719206022
+   }
+  },
+  "source": "computed"
+ },
+ "impervious": {
+  "lot": 7285.613788298572,
+  "lotPolygon": 7326.9299,
+  "lotPlat": 7282,
+  "house": 2133.222222222222,
+  "living": 1602,
+  "garage": 469,
+  "porch": 62.22222222222217,
+  "flatwork": 479.1576481018953,
+  "drive": 351.1159814352288,
+  "walk": 86.04166666666652,
+  "stoop": 42,
+  "total": 2612.3798703241173,
+  "pct": 35.856688897232814,
+  "pctRounded": 36
+ }
+}

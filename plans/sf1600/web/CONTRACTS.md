@@ -109,3 +109,31 @@ Sheet 1 — Site Plan, Roof Plan, Front & Rear elevations, notes, title block; S
 (architectural) with square-footage tabulation, Left & Right elevations, door/window schedules,
 general notes. Title block: "SF 1600 F — CONCEPT STUDY — NOT FOR CONSTRUCTION — derived from Plan
 Factory SF 1258 F (Antonio Escobedo) for Dantega Homes / Daniel Orhiunu, 738 Sawtooth Dr."
+
+### `HouseGeometry` — as implemented (additions to the contract above)
+
+* `build(spec, opts)` — `opts.clip` (default **true**): `roofs` holds only the **visible** part of
+  every roof plane, clipped against the other pieces, so valleys and the lines where one roof dies
+  into another are polygon edges; a plane can come back as several convex parts (`planeId`, `part`,
+  `parts`). `roofsUnclipped` always holds the whole planes exactly as described above
+  (hip: 2 trapezoids + 2 triangles; gable: 2 rectangles + hip/valley treatment of unlisted ends).
+  `opts.autoValley` (default **true**): an unlisted end whose eave line lies inside another piece and
+  whose ridge runs into that roof is a **valley** end (planes run straight until the ridge meets the
+  other roof, as on the architect's roof plan: garage, wing and porch ridges die into the main hip)
+  rather than a hip. A piece may force it: `"ends": {"rear": "valley"}`. With
+  `{clip:false, autoValley:false}` you get the literal contract planes.
+* Each roof entry also carries `down` (unit plan vector down-slope), `eaveZ`, `ridgeZ` and
+  `edges[i]` tagging edge `poly3[i]→poly3[i+1]`: `eave | ridge | hip | rake | valley | seam`
+  (coplanar neighbour, draw no line) `| under` (another roof's eave hangs above it) `| internal`
+  (split between two parts of one plane) `| cut`.
+* Walls carry `kind`: `wall` (exterior face, z 0→plate), `column` (porch column box faces, z 0→porch
+  plate, material `stone`), `gable` (gable-end triangle, material `gable`), `closure` (siding panel
+  from the plate to the porch ceiling where an exterior wall borders the porch slab); plus `side`,
+  `a`, `b` (plan end points, left→right as seen from outside), `len`, `z0`, `z1`.
+* Openings also carry `w`, `h`, `unitW`, `units`, `code`, `normal`, `id` (doors), `doorKind`; their
+  plan coordinates are snapped onto the wall face line. Interior doors are omitted.
+* `roofPieces[]`: `{ id, kind, ridge, rect, eave, plate, eaveZ, ridgeZ, halfSpan, ridgeLine
+  [[x,y],[x,y]] (visible ridge), ends {left/right | rear/front: hip|gable|valley}, extent }`;
+  `porch: { poly, z, columns }`; `plate`, `porchPlate`, `pitch`, `overhang`; `warnings[]`.
+* Helpers: `decodeSize(label)`, `sideOfNormal(nx, ny)`, `project([x,y,z], side) → {u, v, depth}`
+  (u = to the viewer's right, depth = toward the viewer), `roofZ(model, x, y)`, `SIDES`.
